@@ -1,0 +1,266 @@
+Unity Editor version:    2021.3.11f1 (0a5ca18544bf)
+Branch:                  2021.3/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 13.0 (Build 22A380)
+Darwin version:          22.1.0
+Architecture:            arm64
+Running under Rosetta:   NO
+Available memory:        65536 MB
+Using pre-set license
+Pro License: YES
+
+COMMAND LINE ARGUMENTS:
+/Volumes/eSSD/Unity Installs/2021.3.11f1/Unity.app/Contents/MacOS/Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/Users/ahsen/unity_projects/My Website silicon URP
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+52858
+Successfully changed project path to: /Users/ahsen/unity_projects/My Website silicon URP
+/Users/ahsen/unity_projects/My Website silicon URP
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 51.63 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.11f1 (0a5ca18544bf)
+[Subsystems] Discovering subsystems at path /Volumes/eSSD/Unity Installs/2021.3.11f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/ahsen/unity_projects/My Website silicon URP/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+ preferred device: Apple M1 Max (high power)
+Metal devices available: 1
+0: Apple M1 Max (high power)
+Using device Apple M1 Max (high power)
+Initializing Metal device caps: Apple M1 Max
+Initialize mono
+Mono path[0] = '/Volumes/eSSD/Unity Installs/2021.3.11f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Volumes/eSSD/Unity Installs/2021.3.11f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Volumes/eSSD/Unity Installs/2021.3.11f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56227
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Volumes/eSSD/Unity Installs/2021.3.11f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /Volumes/eSSD/Unity Installs/2021.3.11f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Registered in 0.001624 seconds.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 47.34 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.455 seconds
+Domain Reload Profiling:
+	ReloadAssembly (455ms)
+		BeginReloadAssembly (86ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (0ms)
+		EndReloadAssembly (298ms)
+			LoadAssemblies (87ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (73ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (22ms)
+			SetupLoadedEditorAssemblies (176ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (47ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (101ms)
+				ProcessInitializeOnLoadMethodAttributes (23ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001471 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 50.36 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.763 seconds
+Domain Reload Profiling:
+	ReloadAssembly (763ms)
+		BeginReloadAssembly (112ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (9ms)
+		EndReloadAssembly (578ms)
+			LoadAssemblies (91ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (164ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (44ms)
+			SetupLoadedEditorAssemblies (310ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (2ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (50ms)
+				BeforeProcessingInitializeOnLoad (50ms)
+				ProcessInitializeOnLoadAttributes (157ms)
+				ProcessInitializeOnLoadMethodAttributes (50ms)
+				AfterProcessingInitializeOnLoad (1ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (2ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launching external process: /Volumes/eSSD/Unity Installs/2021.3.11f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.06 seconds
+Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3535 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 32 unused Assets / (359.2 KB). Loaded Objects now: 4021.
+Memory consumption went from 240.4 MB to 240.0 MB.
+Total: 2.376208 ms (FindLiveObjects: 0.107417 ms CreateObjectMapping: 0.039833 ms MarkObjects: 2.050083 ms  DeleteObjects: 0.178375 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 100579.050413 seconds.
+  path: Assets/Materials/Car Materials/Car Body (Yellow).mat
+  artifactKey: Guid(5aba360e3c46e45caa99289213cd0a6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Car Materials/Car Body (Yellow).mat using Guid(5aba360e3c46e45caa99289213cd0a6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '007f03f06962247dcf3cb2b31ffe5bdd') in 0.163835 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000064 seconds.
+  path: Assets/Materials/Car Materials/Car Body (Red).mat
+  artifactKey: Guid(093a1ee5cc3ed4452916b7c3468ec072) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Car Materials/Car Body (Red).mat using Guid(093a1ee5cc3ed4452916b7c3468ec072) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f6d9a2fdfb2da39cc446d71a0a385ee') in 0.008576 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/Materials/Car Materials/Metal Glossy.mat
+  artifactKey: Guid(a91b1ea4fa8c4413a94ac32055b3d9dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Car Materials/Metal Glossy.mat using Guid(a91b1ea4fa8c4413a94ac32055b3d9dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6af05a868a12bb9fd07fa60dc1a03c79') in 0.007672 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000538 seconds.
+  path: Assets/Materials/Car Materials/Mirror Finish.mat
+  artifactKey: Guid(2970b5e6b4d5147d1b57ef28842d2d15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Car Materials/Mirror Finish.mat using Guid(2970b5e6b4d5147d1b57ef28842d2d15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1a0b51396b01e0cc7991fa769e1a9b5') in 0.007665 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000072 seconds.
+  path: Assets/Materials/Car Materials/Rim.mat
+  artifactKey: Guid(6a025644bc3ce4732bf6a40aba6c06f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Car Materials/Rim.mat using Guid(6a025644bc3ce4732bf6a40aba6c06f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e907d1b5b73e46c7ff9ceda72cc62af') in 0.026629 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Materials/Car Materials/Green.mat
+  artifactKey: Guid(84a6d70782e194e11b13c440065e02b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Car Materials/Green.mat using Guid(84a6d70782e194e11b13c440065e02b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdf7a110ca7413b8556023169246dc08') in 0.019420 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/Materials/Car Materials/Car Body (Blue).mat
+  artifactKey: Guid(c8171f419b3574b658a6e1bdf317a754) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Car Materials/Car Body (Blue).mat using Guid(c8171f419b3574b658a6e1bdf317a754) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58a23cab4591215d7e1e1e9332a8ad1e') in 0.009245 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/Materials/Car Materials/Car Body (Silver).mat
+  artifactKey: Guid(8854f3c0634834d53a29a4856e8a67a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Car Materials/Car Body (Silver).mat using Guid(8854f3c0634834d53a29a4856e8a67a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e395d1fb59965e2a3c6863b8a9d1e69') in 0.007544 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000063 seconds.
+  path: Assets/Materials/Car Materials/Headlights.mat
+  artifactKey: Guid(1906dd6db63cb48cbb5e0b9775064af4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Car Materials/Headlights.mat using Guid(1906dd6db63cb48cbb5e0b9775064af4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe21f23197ae686ff364927560cfb39f') in 0.007279 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000069 seconds.
+  path: Assets/Materials/Car Materials/Brushed Metal.mat
+  artifactKey: Guid(8007a059ea9d046b999bf7eb44faeae0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Car Materials/Brushed Metal.mat using Guid(8007a059ea9d046b999bf7eb44faeae0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '291572ef5aff1f31c85df3c4a3a0b12d') in 0.006792 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000054 seconds.
+  path: Assets/Materials/Car Materials/Car Body (Black).mat
+  artifactKey: Guid(e94dacbad5476460887bc1bb6675e30e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Car Materials/Car Body (Black).mat using Guid(e94dacbad5476460887bc1bb6675e30e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52e33a7803891cfdd37d06a6a6571672') in 0.007789 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000069 seconds.
+  path: Assets/Materials/Car Materials/Window.mat
+  artifactKey: Guid(64c0d2ee307dc468ead6b529ca320569) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Car Materials/Window.mat using Guid(64c0d2ee307dc468ead6b529ca320569) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '821662047360fca4ff7da1bce042c7df') in 0.010223 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/Materials/Car Materials/Car Body (Striped Yellow).mat
+  artifactKey: Guid(273d7a3d23f0a47d5856b96f83c191a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Car Materials/Car Body (Striped Yellow).mat using Guid(273d7a3d23f0a47d5856b96f83c191a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2617e8692e6403c5fc2717dcc78b0579') in 0.008391 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/Materials/Car Materials/Air Intake.mat
+  artifactKey: Guid(11993ac26ca5944aa9845c8111038eb2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Car Materials/Air Intake.mat using Guid(11993ac26ca5944aa9845c8111038eb2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd79ff68fb057115188194db0982fe821') in 0.020573 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 218.888090 seconds.
+  path: Assets/Materials/Car Materials/Green.mat
+  artifactKey: Guid(84a6d70782e194e11b13c440065e02b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Car Materials/Green.mat using Guid(84a6d70782e194e11b13c440065e02b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b03e265b87d97ed09c4324222bf2244d') in 1.005370 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000052 seconds.
+  path: Assets/Materials/Car Materials/Tail Light.mat
+  artifactKey: Guid(b8dd71aeafe634e45b51aa0ea19160d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Car Materials/Tail Light.mat using Guid(b8dd71aeafe634e45b51aa0ea19160d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f921471db78010086f3a001f60882818') in 0.007597 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting

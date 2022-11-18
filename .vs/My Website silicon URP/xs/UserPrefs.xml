@@ -1,0 +1,32 @@
+﻿<Properties StartupConfiguration="{30B53303-FBF6-FCCE-9A3D-49031A3BACC7}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/carDriver.cs">
+    <Files>
+      <File FileName="Assets/Scripts/gameLogic.cs" Line="31" Column="6" />
+      <File FileName="Assets/Scripts/lightProbeStuff.cs" Line="6" Column="40" />
+      <File FileName="Assets/Scripts/carDriver.cs" Line="314" Column="87" />
+      <File FileName="Assets/Scripts/player.cs" Line="160" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="My Website silicon URP" expanded="True" selected="True" />
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Unity" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b5bdff72-129b-4d4b-a7f4-feb585c717c1" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+</Properties>

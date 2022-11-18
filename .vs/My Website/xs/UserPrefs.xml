@@ -1,0 +1,35 @@
+﻿<Properties StartupConfiguration="{79FC4EA0-5E5B-B28E-CD94-16F077258327}|">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/linkButton.cs">
+    <Files>
+      <File FileName="Assets/Scripts/carDriver.cs" Line="248" Column="29" />
+      <File FileName="Assets/Scripts/linkButton.cs" Line="147" Column="44" />
+      <File FileName="Assets/Scripts/camController.cs" Line="29" Column="1" />
+      <File FileName="Assets/Scripts/player.cs" Line="95" Column="67" />
+      <File FileName="Assets/Scripts/webGLMobileCheck.cs" Line="13" Column="45" />
+      <File FileName="Assets/Scripts/tiltCorrection.cs" Line="27" Column="1" />
+      <File FileName="Assets/Scripts/carLights.cs" Line="79" Column="34" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="My Website" expanded="True" selected="True" />
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Unity" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ac290bc2-0efc-48a2-b208-ce832ead42a2" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>

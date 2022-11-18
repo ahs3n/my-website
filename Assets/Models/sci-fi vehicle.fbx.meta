@@ -1,0 +1,196 @@
+fileFormatVersion: 2
+guid: 3b75b3218e92946a990a5bb858eb007d
+ModelImporter:
+  serializedVersion: 21100
+  internalIDToNameTable:
+  - first:
+      74: 6127710222979256564
+    second: Wheel RL|Front Arm.001Action
+  - first:
+      74: -8383450862199863253
+    second: Wheel RL|IcosphereAction
+  - first:
+      74: 6666826995998172555
+    second: Wheel RL|IcosphereAction.001
+  - first:
+      74: 2474785510157486305
+    second: Wheel RL|Rear Arms.001Action
+  - first:
+      74: 5678498945291969158
+    second: Wheel RL|Rear Arms.001Action.001
+  - first:
+      74: -5795425574708304874
+    second: Wheel RL|Wheel FRAction
+  - first:
+      74: -5582449436861148550
+    second: Wheel RL|Wheel RLAction
+  - first:
+      74: -8407473180191481980
+    second: Wheel FR|Front Arm.001Action
+  - first:
+      74: -6211648104370949130
+    second: Wheel FR|IcosphereAction
+  - first:
+      74: -8527550762329328789
+    second: Wheel FR|IcosphereAction.001
+  - first:
+      74: -7922213519328276319
+    second: Wheel FR|Rear Arms.001Action
+  - first:
+      74: 4877821621535566573
+    second: Wheel FR|Rear Arms.001Action.001
+  - first:
+      74: -821868328102808281
+    second: Wheel FR|Wheel FRAction
+  - first:
+      74: 1690063594822974640
+    second: Wheel FR|Wheel RLAction
+  - first:
+      74: -798897228540642467
+    second: Front Arm.001|Front Arm.001Action
+  - first:
+      74: 2192321510198710639
+    second: Front Arm.001|IcosphereAction
+  - first:
+      74: -6932709096905283594
+    second: Front Arm.001|IcosphereAction.001
+  - first:
+      74: 6104677510987712695
+    second: Front Arm.001|Rear Arms.001Action
+  - first:
+      74: -8584891252852594995
+    second: Front Arm.001|Rear Arms.001Action.001
+  - first:
+      74: 6610000809691211238
+    second: Front Arm.001|Wheel FRAction
+  - first:
+      74: -6008827767073302585
+    second: Front Arm.001|Wheel RLAction
+  - first:
+      74: -8677100155372936560
+    second: Rear Arms.001|Front Arm.001Action
+  - first:
+      74: 7343803033051811487
+    second: Rear Arms.001|IcosphereAction
+  - first:
+      74: -3587242694498346099
+    second: Rear Arms.001|IcosphereAction.001
+  - first:
+      74: 9011922198555816426
+    second: Rear Arms.001|Rear Arms.001Action
+  - first:
+      74: -6822638505635347270
+    second: Rear Arms.001|Rear Arms.001Action.001
+  - first:
+      74: 5361783388695877574
+    second: Rear Arms.001|Wheel FRAction
+  - first:
+      74: -8952816031374685362
+    second: Rear Arms.001|Wheel RLAction
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Emission
+    second: {fileID: 2100000, guid: 7e8051263733f49e5a69477cf2554fd1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: 64c0d2ee307dc468ead6b529ca320569, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 100
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
