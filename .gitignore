@@ -1,9 +1,4 @@
 *.csproj
 .DS_Store
 /Library
-/Logs
-/UserSettings
-/~hidden
-/Temp
-/bin
 *.sln
