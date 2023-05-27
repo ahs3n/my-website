@@ -1,5 +1,5 @@
 *.csproj
-*.DS_Store
+.DS_Store
 /Library
 /Logs
 /Packages
