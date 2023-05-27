@@ -1,3 +1,5 @@
 *.csproj
 .DS_Store
 /Library
+/Logs
+/Temp
