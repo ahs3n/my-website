@@ -69,6 +69,7 @@ MonoBehaviour:
   mobileControls: {fileID: 0}
   mainCam: {fileID: 1626657081756864258}
   speed: 50
+  usingMobileControls: 0
   followStartDelay: 2
   carSwitchDistance: 15
   cars:
@@ -79,6 +80,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   obstacleErrorCorrectionDistance: 20
+  particles: 1
 --- !u!135 &593734906163981213
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -141,14 +143,14 @@ ReflectionProbe:
   m_UpdateFrequency: 0
   m_BoxSize: {x: 10, y: 10, z: 10}
   m_BoxOffset: {x: 0, y: 0, z: 0}
-  m_NearClip: 0.3
+  m_NearClip: 3
   m_FarClip: 1000
-  m_ShadowDistance: 100
+  m_ShadowDistance: 10
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 23
+    m_Bits: 30999
   m_IntensityMultiplier: 1
   m_BlendDistance: 1
   m_HDR: 1

@@ -10,11 +10,13 @@ Material:
   m_Name: Normal Tire
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords:
+  - _ENVIRONMENTREFLECTIONS_OFF
   - _NORMALMAP
   - _PARALLAXMAP
+  - _SPECULARHIGHLIGHTS_OFF
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap:
@@ -112,7 +114,7 @@ Material:
     - _EmissionIntensity: 1
     - _EnableDetailMask: 0
     - _EnableTriplanarProjection: 1
-    - _EnvironmentReflections: 1
+    - _EnvironmentReflections: 0
     - _GlossMapScale: 0.4
     - _Glossiness: 0.4
     - _GlossyReflections: 1
@@ -129,7 +131,7 @@ Material:
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _Source: 0
-    - _SpecularHighlights: 1
+    - _SpecularHighlights: 0
     - _SpecularIntensity: 0.2
     - _SpreadDetailMap: 0
     - _SrcBlend: 1
@@ -145,8 +147,8 @@ Material:
     - _ZWrite: 1
     - __dirty: 1
     m_Colors:
-    - _BaseColor: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 1}
-    - _Color: {r: 0.07547168, g: 0.07547168, b: 0.07547168, a: 1}
+    - _BaseColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
+    - _Color: {r: 0.13207546, g: 0.13207546, b: 0.13207546, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 0}
     - _DetailSpecularColor: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

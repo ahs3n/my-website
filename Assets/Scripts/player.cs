@@ -45,6 +45,8 @@ public class player : MonoBehaviour
     private bool right;
     private bool left;
 
+    [HideInInspector]
+    public bool particles = true;
 
     // Start is called before the first frame update
     void Start()
@@ -66,17 +68,7 @@ public class player : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         originalDrag = rb.drag == 0 ? 5 : rb.drag;
 
-        if (speed < 0f)
-        {
-            if (speed != 0f)
-            {
-                speed = Mathf.Abs(speed);
-            }
-            else
-            {
-                speed = 500f;
-            }
-        }
+        if (speed < 0) speed = -speed;
 
         for (int i = 0; i < cars.Length; i++)
         {
@@ -90,7 +82,7 @@ public class player : MonoBehaviour
             }
         }
 
-        StartCoroutine(Wait());
+        StartCoroutine(Wait(followStartDelay));
 
         camSpc = mainCam.GetComponent<SphereCollider>();
 
@@ -117,18 +109,19 @@ public class player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
+        if (Input.GetKeyDown(KeyCode.R) && ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))))
         {
-            smoothSwitch();
+            rb.drag = 15;
+            StartCoroutine(Wait(followStartDelay));
         }
 
         //Locating nearest other car when E is clicked
-        float distanceOfClosestCar = carSwitchDistance;
+        float distanceOfClosestCar = carSwitchDistance * carSwitchDistance;
         if (Input.GetKeyDown(KeyCode.E))
         {
             for (int i = 0; i < cars.Length; i++)
             {
-                float dist = (cars[i].gameObject.transform.position - target.transform.position).magnitude;
+                float dist = (cars[i].gameObject.transform.position - target.transform.position).sqrMagnitude;
                 if (dist < distanceOfClosestCar  && cars[i] != target)
                 {
                     distanceOfClosestCar = dist;
@@ -154,15 +147,15 @@ public class player : MonoBehaviour
                     fingerCount++;
                 }
             }
-            if (fingerCount > 0)// || Input.GetMouseButton(0))
+            if (fingerCount > 0)
             {
                 print("User has " + fingerCount + " finger(s) touching the screen");
                 usingMobileControls = true;
             }
         }
 
-        if (usingMobileControls && !mobileControls.active) { mobileControls.SetActive(true); }
-        else if (!usingMobileControls && mobileControls.active) { mobileControls.SetActive(false); }   //FIX ME
+        if (usingMobileControls && !mobileControls.activeSelf) { mobileControls.SetActive(true); }
+        else if (!usingMobileControls && mobileControls.activeSelf) { mobileControls.SetActive(false); }   //FIX ME
 
 
         if (right)
@@ -211,7 +204,7 @@ public class player : MonoBehaviour
         }
 
         Time.timeScale = timeScaling;
-        //Time.fixedDeltaTime = 0.02f * timeScaling;
+        Time.fixedDeltaTime = 0.02f * (timeScaling==0?1.0f:timeScaling);
 
     }
 
@@ -225,19 +218,13 @@ public class player : MonoBehaviour
         targetController = carControllers[index];
         targetController.canControl = true;
 
-        smoothSwitch();
-    }
-
-    void smoothSwitch()
-    {
         rb.drag = 15;
-        StartCoroutine(Wait());
+        StartCoroutine(Wait(1));
     }
 
-    IEnumerator Wait()
+    IEnumerator Wait(float delay)
     {
-        yield return new WaitForSeconds(followStartDelay);
-        followingTarget = true;
+        yield return new WaitForSeconds(delay);
         rb.drag = originalDrag;
     }
 
@@ -271,6 +258,7 @@ public class player : MonoBehaviour
         usingMobileControls = true;
         targetController.vertical = verticalInputSlider.value;
     }
+
 
 
 }

@@ -8,7 +8,6 @@ public class carRighterUpper : MonoBehaviour
 
     private Rigidbody rb;
     private bool panic;
-    private bool panicDone;
     private float torqueMultiplier = 0;
 
 
@@ -49,14 +48,12 @@ public class carRighterUpper : MonoBehaviour
             rb.AddTorque(axis.normalized * angle * adjustFactor);
 
 
+            if (!(transform.rotation.eulerAngles.z > 90 && transform.rotation.eulerAngles.z < 270))
+            {
+                panic = false;
+                torqueMultiplier = 0;
+            }
         }
-
-        if (!(transform.rotation.eulerAngles.z > 90 && transform.rotation.eulerAngles.z < 270))
-        {
-            panic = false;
-            torqueMultiplier = 0;
-        }
-
     }
 
     private void OnCollisionStay(Collision other)
@@ -64,13 +61,6 @@ public class carRighterUpper : MonoBehaviour
         if (transform.rotation.eulerAngles.z > 90 && transform.rotation.eulerAngles.z < 270)
         {
             panic = true;
-            panicDone = false;
         }
     }
-
-    private void OnCollisionExit(Collision other)
-    {
-        panicDone = true;
-    }
-
 }

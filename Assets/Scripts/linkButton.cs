@@ -14,9 +14,8 @@ public class linkButton : MonoBehaviour
 
     public float distance = 3.5f;
     private float baseDistance;
-    private float addedDistance;
 
-    public float timeToTarget = 1;
+    public float speed = 0.05f;
 
     private GameObject camera;
 
@@ -51,12 +50,13 @@ public class linkButton : MonoBehaviour
     {
         if (activated)
         {
+            //Move into position at top
             if ((((Vector3.up * distance) + transform.position) - linkIcon.transform.position).magnitude > 0.1)
             {
-                rb.AddForce((new Vector3(transform.position.x, distance, transform.position.z) - linkIcon.transform.position) * (1 / timeToTarget * 100));
+                //rb.AddForce((new Vector3(transform.position.x, distance, transform.position.z) - linkIcon.transform.position) * (1 / timeToTarget * 100));
 
                 //linkIcon.transform.localEulerAngles = new Vector3(Mathf.Lerp(0, 90, linkIcon.transform.localPosition.y / distance), 0, 0);
-
+                linkIcon.transform.position += (new Vector3(transform.position.x, distance, transform.position.z) - linkIcon.transform.position) * speed;
 
 
                 Vector3 dir = camera.transform.position - transform.position;
@@ -80,12 +80,15 @@ public class linkButton : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.KeypadEnter))
             {
                 //Should run javascript and open new tab
-#if !UNITY_EDITOR
-                openWindow(link);
-#endif
-                Debug.Log("Would open " + link.ToString());
+                if (link != "")
+                {
+                    #if !UNITY_EDITOR
+                        openWindow(link);
+                    #endif
+                    Debug.Log("Opening " + link.ToString());
+                }
 
-                //Debug by launching the car into the sky
+                //Debug by launching some car into the sky
                 GameObject.FindObjectOfType<carDriver>().GetComponent<Rigidbody>().AddForce(Vector3.up * 10000, ForceMode.Impulse);
 
 
@@ -101,10 +104,11 @@ public class linkButton : MonoBehaviour
         }
         else
         {
+            //Move back down
             if ((new Vector3(transform.position.x, groundOffset, transform.position.z) - linkIcon.transform.position).magnitude > 0.1)
             {
-                rb.AddForce((new Vector3(transform.position.x, groundOffset, transform.position.z) - linkIcon.transform.position) * (1 / timeToTarget * 100));
-
+                //rb.AddForce((new Vector3(transform.position.x, groundOffset, transform.position.z) - linkIcon.transform.position) * (1 / timeToTarget * 100));
+                linkIcon.transform.position += (new Vector3(transform.position.x, groundOffset, transform.position.z) - linkIcon.transform.position) * speed;
 
                 Vector3 dir = camera.transform.position - transform.position;
                 dir.y = 0; // keep the direction strictly horizontal
@@ -130,26 +134,26 @@ public class linkButton : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Car"))
         {
-            if (other.transform.root.gameObject.GetComponent<carDriver>().canControl)
+            if (other.transform.GetComponentInParent<carDriver>().canControl)
             {
                 activated = true;
 
                 selfMaterial.SetColor("_Color", originalColour);
-                addedDistance = other.bounds.size.y;
-                distance = baseDistance + addedDistance;
+                distance = baseDistance + other.bounds.size.y;
             }
-
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.transform.root.gameObject.CompareTag("Car"))
+        if (other.gameObject.CompareTag("Car"))
         {
+            if (other.transform.GetComponentInParent<carDriver>().canControl)
+            {
+                activated = false;
 
-            activated = false;
-
-            selfMaterial.SetColor("_Color", inactiveColour);
+                selfMaterial.SetColor("_Color", inactiveColour);
+            }
         }
     }
 }

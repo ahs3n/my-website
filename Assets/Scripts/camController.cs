@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class camController : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class camController : MonoBehaviour
 
     private void Start()
     {
+        UILayer = LayerMask.NameToLayer("UI");
+
+
         yRotTransform = yRotBody.transform;
         xRotTransform = xRotBody.transform;
 
@@ -44,9 +48,14 @@ public class camController : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, 0, 90);
 
+        //print(IsPointerOverUIElement() ? "Over UI" : "Not over UI");
 
-        xRotTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        yRotTransform.Rotate(Vector3.up * mouseX);
+        if (!IsPointerOverUIElement())
+        {
+            xRotTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            yRotTransform.Rotate(Vector3.up * mouseX);
+        }
+
 
 
 
@@ -56,6 +65,41 @@ public class camController : MonoBehaviour
             //cam.gameObject.transform.localPosition = cam.gameObject.transform.localPosition + Vector3.forward * scrollDelta * 5f;
             cam.gameObject.transform.localPosition = new Vector3(0, 0, Mathf.Min(-10, cam.gameObject.transform.localPosition.z + scrollDelta * 5f));
         }
+    }
+
+
+
+
+    int UILayer;
+
+    //Returns 'true' if we touched or hovering on Unity UI element.
+    public bool IsPointerOverUIElement()
+    {
+        return IsPointerOverUIElement(GetEventSystemRaycastResults());
+    }
+
+
+    //Returns 'true' if we touched or hovering on Unity UI element.
+    private bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaysastResults)
+    {
+        for (int index = 0; index < eventSystemRaysastResults.Count; index++)
+        {
+            RaycastResult curRaysastResult = eventSystemRaysastResults[index];
+            if (curRaysastResult.gameObject.layer == UILayer)
+                return true;
+        }
+        return false;
+    }
+
+
+    //Gets all event system raycast results of current mouse or touch position.
+    static List<RaycastResult> GetEventSystemRaycastResults()
+    {
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.mousePosition;
+        List<RaycastResult> raysastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, raysastResults);
+        return raysastResults;
     }
 }
 
