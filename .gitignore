@@ -1,4 +1,10 @@
 *.csproj
 *.DS_Store
 /Library
+/Logs
+/Packages
+/UserSettings
+/~hidden
+/Temp
+/bin
 *.sln
