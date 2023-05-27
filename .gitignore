@@ -1,4 +1,3 @@
 *.csproj
 .DS_Store
 /Library
-*.sln
