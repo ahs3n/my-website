@@ -1,0 +1,327 @@
+Unity Editor version:    2021.3.11f1 (0a5ca18544bf)
+Branch:                  2021.3/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 13.0 (Build 22A380)
+Darwin version:          22.1.0
+Architecture:            arm64
+Running under Rosetta:   NO
+Available memory:        65536 MB
+Using pre-set license
+Pro License: YES
+
+COMMAND LINE ARGUMENTS:
+/Volumes/eSSD/Unity Installs/2021.3.11f1/Unity.app/Contents/MacOS/Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+/Users/ahsen/unity_projects/my-website
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+65486
+Successfully changed project path to: /Users/ahsen/unity_projects/my-website
+/Users/ahsen/unity_projects/my-website
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 45.45 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.11f1 (0a5ca18544bf)
+[Subsystems] Discovering subsystems at path /Volumes/eSSD/Unity Installs/2021.3.11f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/ahsen/unity_projects/my-website/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+ preferred device: Apple M1 Max (high power)
+Metal devices available: 1
+0: Apple M1 Max (high power)
+Using device Apple M1 Max (high power)
+Initializing Metal device caps: Apple M1 Max
+Initialize mono
+Mono path[0] = '/Volumes/eSSD/Unity Installs/2021.3.11f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Volumes/eSSD/Unity Installs/2021.3.11f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Volumes/eSSD/Unity Installs/2021.3.11f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56203
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Volumes/eSSD/Unity Installs/2021.3.11f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /Volumes/eSSD/Unity Installs/2021.3.11f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: /Volumes/eSSD/Unity Installs/2021.3.11f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.004602 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 48.42 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.547 seconds
+Domain Reload Profiling:
+	ReloadAssembly (547ms)
+		BeginReloadAssembly (135ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (0ms)
+		EndReloadAssembly (324ms)
+			LoadAssemblies (141ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (86ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (23ms)
+			SetupLoadedEditorAssemblies (180ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (8ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (48ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (97ms)
+				ProcessInitializeOnLoadMethodAttributes (26ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001564 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 52.70 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.879 seconds
+Domain Reload Profiling:
+	ReloadAssembly (880ms)
+		BeginReloadAssembly (124ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (14ms)
+		EndReloadAssembly (663ms)
+			LoadAssemblies (116ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (197ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (44ms)
+			SetupLoadedEditorAssemblies (337ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (3ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (53ms)
+				BeforeProcessingInitializeOnLoad (54ms)
+				ProcessInitializeOnLoadAttributes (163ms)
+				ProcessInitializeOnLoadMethodAttributes (62ms)
+				AfterProcessingInitializeOnLoad (1ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (2ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launching external process: /Volumes/eSSD/Unity Installs/2021.3.11f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.06 seconds
+Refreshing native plugins compatible for Editor in 0.45 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3657 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 44 unused Assets / (1.5 MB). Loaded Objects now: 4106.
+Memory consumption went from 150.6 MB to 149.1 MB.
+Total: 2.720292 ms (FindLiveObjects: 0.112500 ms CreateObjectMapping: 0.043459 ms MarkObjects: 2.236667 ms  DeleteObjects: 0.326959 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 338564.340068 seconds.
+  path: Assets/Prefabs/Switch Housing.prefab
+  artifactKey: Guid(86cc379b3c19d4126aa87cac933012a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switch Housing.prefab using Guid(86cc379b3c19d4126aa87cac933012a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4952da787f30abe236472a5685c25d81') in 1.051147 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.008436 seconds.
+  path: Assets/Prefabs/Switch Housing.prefab
+  artifactKey: Guid(86cc379b3c19d4126aa87cac933012a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switch Housing.prefab using Guid(86cc379b3c19d4126aa87cac933012a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff34ae3d25c496d06020d4349aae39ac') in 0.029803 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.950089 seconds.
+  path: Assets/Prefabs/Slider Housing.prefab
+  artifactKey: Guid(5c49533246e9040d38a081a28bfcd9af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Slider Housing.prefab using Guid(5c49533246e9040d38a081a28bfcd9af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0a99c678193a40aaaea5665826694a5') in 0.026744 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.917371 seconds.
+  path: Assets/Prefabs/Slider Housing.prefab
+  artifactKey: Guid(5c49533246e9040d38a081a28bfcd9af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Slider Housing.prefab using Guid(5c49533246e9040d38a081a28bfcd9af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fff20bc378da454a80080526c1d07763') in 0.030214 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.025460 seconds.
+  path: Assets/Materials/sparks.mat
+  artifactKey: Guid(3801cdb09cec341369b1cd4c297b4862) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/sparks.mat using Guid(3801cdb09cec341369b1cd4c297b4862) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75cb685dfc601b2f0dec6ae0f4325654') in 0.113281 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.024437 seconds.
+  path: Assets/Prefabs/Slider Housing.prefab
+  artifactKey: Guid(5c49533246e9040d38a081a28bfcd9af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Slider Housing.prefab using Guid(5c49533246e9040d38a081a28bfcd9af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '743454c4c573bea7b9dd640fcd551a6f') in 0.025557 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 60.244439 seconds.
+  path: Assets/Prefabs/Switch Housing Blank.prefab
+  artifactKey: Guid(25b021a177ea44327b82afaf60a568f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switch Housing Blank.prefab using Guid(25b021a177ea44327b82afaf60a568f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b39bf1b1fd0d4a5977f86109f988d933') in 0.009055 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.830025 seconds.
+  path: Assets/Prefabs/Switch Housing End Piece.prefab
+  artifactKey: Guid(58d170efa1c5b421b8a7e5d40eaefb34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switch Housing End Piece.prefab using Guid(58d170efa1c5b421b8a7e5d40eaefb34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c325f960b676ee5e2ea41afd2e6e6cc') in 0.010413 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.911070 seconds.
+  path: Assets/Prefabs/Switch Housing Ramp End.prefab
+  artifactKey: Guid(d87e3662da6364d47b9b00c56424b20b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switch Housing Ramp End.prefab using Guid(d87e3662da6364d47b9b00c56424b20b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d8ad7f825d3487ed21015b88ad17e06') in 0.009446 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004613 seconds.
+  path: Assets/Prefabs/Switch Housing Ramp Left.prefab
+  artifactKey: Guid(a46464e737bf54f18bfcc0f3c06e8572) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switch Housing Ramp Left.prefab using Guid(a46464e737bf54f18bfcc0f3c06e8572) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79fd86a14823606f3a6007b49fb87f0c') in 0.009805 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.790391 seconds.
+  path: Assets/Prefabs/Switches
+  artifactKey: Guid(ed91c2619d96b4f4a9070a8d94383d1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switches using Guid(ed91c2619d96b4f4a9070a8d94383d1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebdc25b347970565620a53b3f70e3cb7') in 0.000550 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 97.224153 seconds.
+  path: Assets/Prefabs/Switches/Switch Housing Ramp Right.prefab
+  artifactKey: Guid(3e30a9483d4fc4fc0a2c1c5084f1ed5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switches/Switch Housing Ramp Right.prefab using Guid(3e30a9483d4fc4fc0a2c1c5084f1ed5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4529b4a6135e7e76dce3c1518ffa8957') in 0.009234 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.218052 seconds.
+  path: Assets/Prefabs/Switches/Switch Housing Ramp Right.prefab
+  artifactKey: Guid(3e30a9483d4fc4fc0a2c1c5084f1ed5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switches/Switch Housing Ramp Right.prefab using Guid(3e30a9483d4fc4fc0a2c1c5084f1ed5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5032f06cdea9fd2300b16b13caabe3b5') in 0.008351 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.025720 seconds.
+  path: Assets/Prefabs/Switches/Switch Housing Ramp Right.prefab
+  artifactKey: Guid(3e30a9483d4fc4fc0a2c1c5084f1ed5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switches/Switch Housing Ramp Right.prefab using Guid(3e30a9483d4fc4fc0a2c1c5084f1ed5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5ee92f0a9cccb78bb80b17f470b4afc') in 0.009004 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.243998 seconds.
+  path: Assets/Prefabs/Switches/Switch Housing Ramp Right.prefab
+  artifactKey: Guid(3e30a9483d4fc4fc0a2c1c5084f1ed5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switches/Switch Housing Ramp Right.prefab using Guid(3e30a9483d4fc4fc0a2c1c5084f1ed5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '803e6487f9d7f0c9bf8436a7e831bf5c') in 0.009220 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.921684 seconds.
+  path: Assets/Prefabs/Switches/Switch Housing Ramp Left.prefab
+  artifactKey: Guid(a46464e737bf54f18bfcc0f3c06e8572) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switches/Switch Housing Ramp Left.prefab using Guid(a46464e737bf54f18bfcc0f3c06e8572) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '246c9496f3359946239b7f3332f06c2c') in 0.007918 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.809780 seconds.
+  path: Assets/Prefabs/Switches/Switch Housing Ramp Left.prefab
+  artifactKey: Guid(a46464e737bf54f18bfcc0f3c06e8572) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switches/Switch Housing Ramp Left.prefab using Guid(a46464e737bf54f18bfcc0f3c06e8572) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'feadb5a6d36a90548738b48557a8dac6') in 0.009067 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.602474 seconds.
+  path: Assets/Prefabs/Switches/Switch Housing Ramp Left.prefab
+  artifactKey: Guid(a46464e737bf54f18bfcc0f3c06e8572) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switches/Switch Housing Ramp Left.prefab using Guid(a46464e737bf54f18bfcc0f3c06e8572) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e45ea017b266d9e445b8643814010286') in 0.009597 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 17.075319 seconds.
+  path: Assets/Prefabs/Switches/Switch Housing End Piece.prefab
+  artifactKey: Guid(58d170efa1c5b421b8a7e5d40eaefb34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switches/Switch Housing End Piece.prefab using Guid(58d170efa1c5b421b8a7e5d40eaefb34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af6cc954b223021fd5226bff22da3d25') in 0.011148 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 174.264277 seconds.
+  path: Assets/Prefabs/Switches/Switch Housing Extender_009.prefab
+  artifactKey: Guid(9b8030b152e0541469dcd8c923d69790) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switches/Switch Housing Extender_009.prefab using Guid(9b8030b152e0541469dcd8c923d69790) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b229529580090ad35b72ea939cbc9a1c') in 0.007777 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.274563 seconds.
+  path: Assets/Prefabs/Switches/Switch Housing Extender.prefab
+  artifactKey: Guid(9b8030b152e0541469dcd8c923d69790) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switches/Switch Housing Extender.prefab using Guid(9b8030b152e0541469dcd8c923d69790) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2a06b82f7910c8855a87e8156355dda') in 0.009121 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 82.705960 seconds.
+  path: Assets/Prefabs/Switches/Switch Housing Extender.prefab
+  artifactKey: Guid(9b8030b152e0541469dcd8c923d69790) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switches/Switch Housing Extender.prefab using Guid(9b8030b152e0541469dcd8c923d69790) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a36808ba6768b6cbbdef04157f4b515') in 0.009125 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.593161 seconds.
+  path: Assets/Prefabs/Switches/Switch Housing Extender.prefab
+  artifactKey: Guid(9b8030b152e0541469dcd8c923d69790) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switches/Switch Housing Extender.prefab using Guid(9b8030b152e0541469dcd8c923d69790) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce3f38be517dd4b04815e05cdf87cd20') in 0.008169 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.797731 seconds.
+  path: Assets/Prefabs/Switches/Switch Housing Extender.prefab
+  artifactKey: Guid(9b8030b152e0541469dcd8c923d69790) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switches/Switch Housing Extender.prefab using Guid(9b8030b152e0541469dcd8c923d69790) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd0542020b073ba383d4fb996b55fa17') in 0.008327 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 43.444521 seconds.
+  path: Assets/Prefabs/Switches/Switch Housing End Piece.prefab
+  artifactKey: Guid(58d170efa1c5b421b8a7e5d40eaefb34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switches/Switch Housing End Piece.prefab using Guid(58d170efa1c5b421b8a7e5d40eaefb34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'acc4f6f4eef7946728820d5af36ff9ff') in 0.011159 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.796871 seconds.
+  path: Assets/Prefabs/Switches/Switch Housing End Piece.prefab
+  artifactKey: Guid(58d170efa1c5b421b8a7e5d40eaefb34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Switches/Switch Housing End Piece.prefab using Guid(58d170efa1c5b421b8a7e5d40eaefb34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b80db0b3a3152375fe44daaa66780f8') in 0.008214 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
