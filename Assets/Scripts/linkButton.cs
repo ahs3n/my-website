@@ -16,10 +16,10 @@ public class linkButton : MonoBehaviour
     private float baseDistance;
 
     public float speed = 0.05f;
+    public float precision = 0.01f;
+    [Space]
 
     private GameObject camera;
-
-    private Rigidbody rb;
 
     private bool activated;
     private bool active;
@@ -27,6 +27,11 @@ public class linkButton : MonoBehaviour
 
     private Color originalColour;
     private Transform originalTransform;
+    private Quaternion originalRotation;
+
+
+    private float fade;
+    private bool updateTransforms;
 
 
     void Start()
@@ -34,13 +39,12 @@ public class linkButton : MonoBehaviour
         selfMaterial = gameObject.GetComponent<MeshRenderer>().material;
         originalColour = selfMaterial.color;
 
-        rb = linkIcon.GetComponent<Rigidbody>();
-
         activated = false;
         selfMaterial.SetColor("_Color", inactiveColour);
 
         camera = GameObject.FindObjectOfType<Camera>().gameObject;
         originalTransform = linkIcon.transform;
+        originalRotation = linkIcon.transform.rotation;
 
         baseDistance = distance;
     }
@@ -50,32 +54,9 @@ public class linkButton : MonoBehaviour
     {
         if (activated)
         {
-            //Move into position at top
-            if ((((Vector3.up * distance) + transform.position) - linkIcon.transform.position).magnitude > 0.1)
-            {
-                //rb.AddForce((new Vector3(transform.position.x, distance, transform.position.z) - linkIcon.transform.position) * (1 / timeToTarget * 100));
 
-                //linkIcon.transform.localEulerAngles = new Vector3(Mathf.Lerp(0, 90, linkIcon.transform.localPosition.y / distance), 0, 0);
-                linkIcon.transform.position += (new Vector3(transform.position.x, distance, transform.position.z) - linkIcon.transform.position) * speed;
-
-
-                Vector3 dir = camera.transform.position - transform.position;
-                dir.y = 0; // keep the direction strictly horizontal
-                Quaternion rot = Quaternion.LookRotation(dir);
-
-                linkIcon.transform.rotation = Quaternion.Slerp(originalTransform.rotation, rot, linkIcon.transform.localPosition.y / distance);
-                linkIcon.transform.localEulerAngles = new Vector3(Mathf.Lerp(0, 90, linkIcon.transform.localPosition.y / distance), linkIcon.transform.localEulerAngles.y, linkIcon.transform.localEulerAngles.z);
-
-
-                /*
-                // slerp to the desired rotation over time
-                transform.rotation = Quaternion.Slerp(transform.rotation, rot, speed * Time.deltaTime);
-                */
-
-
-
-
-            }
+            updateTransforms = true;
+            fade = speed + fade*(1 - speed);
 
             if (Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.KeypadEnter))
             {
@@ -102,21 +83,11 @@ public class linkButton : MonoBehaviour
                 active = true;
             }
         }
-        else
+        else if (updateTransforms)
         {
-            //Move back down
-            if ((new Vector3(transform.position.x, groundOffset, transform.position.z) - linkIcon.transform.position).magnitude > 0.1)
-            {
-                //rb.AddForce((new Vector3(transform.position.x, groundOffset, transform.position.z) - linkIcon.transform.position) * (1 / timeToTarget * 100));
-                linkIcon.transform.position += (new Vector3(transform.position.x, groundOffset, transform.position.z) - linkIcon.transform.position) * speed;
 
-                Vector3 dir = camera.transform.position - transform.position;
-                dir.y = 0; // keep the direction strictly horizontal
-                Quaternion rot = Quaternion.LookRotation(dir);
-
-                linkIcon.transform.localEulerAngles = new Vector3(Mathf.Lerp(0, 90, linkIcon.transform.localPosition.y / distance), 0, 0);
-
-            }
+            updateTransforms = true;
+            fade = fade * (1 - speed);
 
             if (active)
             {
@@ -124,6 +95,35 @@ public class linkButton : MonoBehaviour
 
                 active = false;
             }
+
+            if (fade < precision)
+            {
+                updateTransforms = false;
+            }
+        }
+
+        if (updateTransforms)
+        {
+
+
+
+
+
+
+
+
+            //Move into position
+
+            linkIcon.transform.position += (new Vector3(transform.position.x, active?distance:groundOffset, transform.position.z) - linkIcon.transform.position) * speed;
+
+
+            Vector3 dir = camera.transform.position - linkIcon.transform.position;
+            //dir.y = 0; // keep the direction strictly horizontal; this is redundant with the last line in this block
+            Quaternion rot = active?Quaternion.LookRotation(dir):originalRotation;
+
+            linkIcon.transform.rotation = Quaternion.Slerp(linkIcon.transform.rotation, rot, speed);
+            linkIcon.transform.localEulerAngles = new Vector3(Mathf.Lerp(0, 90, fade), linkIcon.transform.localEulerAngles.y, linkIcon.transform.localEulerAngles.z);
+
         }
     }
 
@@ -139,7 +139,7 @@ public class linkButton : MonoBehaviour
                 activated = true;
 
                 selfMaterial.SetColor("_Color", originalColour);
-                distance = baseDistance + other.bounds.size.y;
+                distance = baseDistance + other.bounds.size.y*0.5f + Vector3.Dot(transform.up, other.gameObject.transform.position - transform.position);
             }
         }
     }
