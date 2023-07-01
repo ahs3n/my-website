@@ -10,8 +10,12 @@ using UnityEngine.Rendering.Universal;
 public class gameLogic : MonoBehaviour
 {
     public Text FPSCounter;
+    public Text KMHCounter;
+    public GameObject CCIndicator;
     private float lastFPS = 60f;
     public player controller;
+    public camController camControl;
+    public UniversalRenderPipelineAsset renderer;
     public Volume volume;
     [HideInInspector]
     public Bloom bloom;
@@ -28,6 +32,12 @@ public class gameLogic : MonoBehaviour
     void Start()
     {
         FPSCounter.enabled = false;
+
+#if (!UNITY_EDITOR)
+
+        Application.targetFrameRate = 120;
+
+#endif
 
         if (volume == null)
         {
@@ -55,9 +65,13 @@ public class gameLogic : MonoBehaviour
             FPSCounter.enabled = !FPSCounter.enabled;
         }
 
-        if (Time.frameCount < 10) { lastFPS = 5f; }
-        lastFPS = Mathf.Lerp(1 / Time.smoothDeltaTime, lastFPS, 0.99f);
+        if (Time.frameCount < 10 || lastFPS == float.NaN) { lastFPS = 5f; }
+        lastFPS = Mathf.Lerp(1 / Time.smoothDeltaTime, lastFPS, 0.99f) * Time.timeScale;
         FPSCounter.text = "FPS: " + Mathf.Round(lastFPS).ToString();
+
+        KMHCounter.text = Mathf.Round(controller.carSpeed*3.6f).ToString() + " km/h";
+
+        CCIndicator.active = controller.cruiseControl;
 
         if (DoF.active)
         {

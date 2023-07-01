@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9186248061278815910}
   - component: {fileID: 6960018558401081913}
   - component: {fileID: 1485266385286973634}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Offroad rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 3649198996629280776}
   - component: {fileID: 3649198996629280782}
   - component: {fileID: 3649198996629280783}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Brake Disk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 3649198997111125072}
   - component: {fileID: 3649198997111125078}
   - component: {fileID: 3649198997111125079}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Brake Caliper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 3649198997172834794}
   - component: {fileID: 3649198997172834792}
   - component: {fileID: 3649198997172834793}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Regular Tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5276515009208284541}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Offroad Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,12 +374,18 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 9186248061278815910}
     m_Modifications:
     - target: {fileID: 1358013995511609519, guid: 347cea3b27d044227bb23e17ab6c6fab,
         type: 3}
       propertyPath: m_Name
       value: A
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358013995511609519, guid: 347cea3b27d044227bb23e17ab6c6fab,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1842942172287607317, guid: 347cea3b27d044227bb23e17ab6c6fab,
         type: 3}
@@ -457,6 +463,9 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 347cea3b27d044227bb23e17ab6c6fab, type: 3}
 --- !u!4 &7217143034708796908 stripped
 Transform:

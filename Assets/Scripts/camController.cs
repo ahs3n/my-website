@@ -11,9 +11,10 @@ public class camController : MonoBehaviour
     private Transform yRotTransform;
     public GameObject xRotBody;
     private Transform xRotTransform;
- 
 
-    private Camera cam;
+
+    [HideInInspector]
+    public Camera cam;
     private float xRotation = 0f;
     private float scrollDelta;
 

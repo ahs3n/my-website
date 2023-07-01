@@ -11,8 +11,8 @@ public class continuousInput : MonoBehaviour
 {
     public float start = 0;
     public float multiplier = 2;
-    public Camera camera;
-    public camController camController;
+    //public Camera camera;
+    //public camController camController;
     public gameLogic commandCentre;
 
     private Vector3 originalPos;
@@ -24,7 +24,9 @@ public class continuousInput : MonoBehaviour
         musicVolume,
         SFXVolume,
         masterVolume,
-        DOFStrength
+        DOFStrength,
+        Resolution,
+        Antialias
     }
     [SerializeField] private valueAdjust valueToAdjust;
 
@@ -39,6 +41,13 @@ public class continuousInput : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         originalPos = gameObject.transform.position;
 
+        StartCoroutine(wait());
+    }
+
+    IEnumerator wait()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        stuff();
     }
 
     // Update is called once per frame
@@ -46,26 +55,38 @@ public class continuousInput : MonoBehaviour
     {
         if (rb.velocity.sqrMagnitude > 0.5)
         {
-            float p = start + multiplier * Vector3.Dot(activeAxis, gameObject.transform.position - originalPos);
-            //Debug.Log(p);
-
-
-            switch (valueToAdjust)
-            {
-                case valueAdjust.musicVolume:
-                    break;
-                case valueAdjust.SFXVolume:
-                    break;
-                case valueAdjust.cameraFOV:
-                    camera.fieldOfView = p;
-                    break;
-                case valueAdjust.mouseSensitivity:
-                    camController.mouseSensitivity = p;
-                    break;
-                case valueAdjust.DOFStrength:
-                    commandCentre.DoF.aperture.value = p;
-                    break;
-            }
+            stuff();
         }
+    }
+
+    void stuff()
+    {
+        float p = start + multiplier * Vector3.Dot(activeAxis, gameObject.transform.position - originalPos);
+        //Debug.Log(p);
+
+
+        switch (valueToAdjust)
+        {
+            case valueAdjust.musicVolume:
+                break;
+            case valueAdjust.SFXVolume:
+                break;
+            case valueAdjust.cameraFOV:
+                commandCentre.camControl.cam.fieldOfView = p;
+                break;
+            case valueAdjust.mouseSensitivity:
+                commandCentre.camControl.mouseSensitivity = p;
+                break;
+            case valueAdjust.DOFStrength:
+                commandCentre.DoF.aperture.value = p;
+                break;
+            case valueAdjust.Resolution:
+                commandCentre.renderer.renderScale = p;
+                break;
+            case valueAdjust.Antialias:
+                commandCentre.renderer.msaaSampleCount = p<1?1:p<2?2:p<3?4:8;
+                break;
+        }
+
     }
 }

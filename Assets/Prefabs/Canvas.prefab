@@ -742,7 +742,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -758,11 +760,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1960, y: 1080}
+  m_ScreenMatchMode: 2
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -799,7 +801,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FPSCounter: {fileID: 997208265}
-  FPSUpdate: 0
+  controller: {fileID: 0}
+  camControl: {fileID: 0}
+  renderer: {fileID: 0}
+  volume: {fileID: 0}
+  bloom: {fileID: 0}
+  DoF: {fileID: 0}
+  motBlur: {fileID: 0}
+  chromatic: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!1 &4505449254838217815
 GameObject:
   m_ObjectHideFlags: 0

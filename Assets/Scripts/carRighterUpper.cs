@@ -9,7 +9,7 @@ public class carRighterUpper : MonoBehaviour
     private Rigidbody rb;
     private bool panic;
     private float torqueMultiplier = 0;
-
+    public float bias = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +48,8 @@ public class carRighterUpper : MonoBehaviour
             rb.AddTorque(axis.normalized * angle * adjustFactor);
 
 
-            if (!(transform.rotation.eulerAngles.z > 90 && transform.rotation.eulerAngles.z < 270))
+
+            if (!(transform.rotation.eulerAngles.z > 90+bias && transform.rotation.eulerAngles.z < 270-bias))
             {
                 panic = false;
                 torqueMultiplier = 0;

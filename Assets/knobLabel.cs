@@ -8,6 +8,7 @@ public class knobLabel : MonoBehaviour
     private Vector3 originalPos;
     public Vector3 maxDisplacement = Vector3.up * -5;
     public float speed;
+    public float precision = 0.005f;
 
     private bool hidden = false;
     private GameObject cam;
@@ -24,7 +25,7 @@ public class knobLabel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((label.transform.localPosition - (originalPos + (hidden ? maxDisplacement : Vector3.zero))).sqrMagnitude > 0.01f)
+        if ((label.transform.localPosition - (originalPos + (hidden ? maxDisplacement : Vector3.zero))).sqrMagnitude > precision)
         {
             label.transform.localPosition = label.transform.localPosition * (1-speed) + speed * (originalPos + (hidden ? maxDisplacement : Vector3.zero));
         }

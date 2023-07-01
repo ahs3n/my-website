@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 5
+  version: 7
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -23,6 +23,8 @@ Material:
   m_Name: water
   m_Shader: {fileID: -6465566751694194690, guid: 51f32466a21914c87beecb57eb0697dc,
     type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 0
@@ -31,6 +33,7 @@ Material:
   m_CustomRenderQueue: 2950
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -57,10 +60,11 @@ Material:
     - _Noise_Scale: 0.2
     - _Noise_Scale_1: 486.9
     - _Noise_Scale_2: 486.9
-    - _Noise_Scale_Opposite: 0.3
-    - _Noise_Strength: 0.8
+    - _Noise_Scale_Opposite: 1.43
+    - _Noise_Strength: 1.87
     - _Noise_Strength_1: 0.1
     - _Noise_Strength_2: 0.1
+    - _Noise_Strength_Opposite: 0.31
     - _QueueControl: 0
     - _QueueOffset: -50
     - _Rate_of_Change: 0.007
@@ -69,13 +73,13 @@ Material:
     - _Speed_2: -0.01
     - _Total_Noise_Strength: 1
     - _Water_Speed: 3
-    - _Water_Speed_Opposite: -4
+    - _Water_Speed_Opposite: -0.5
     - _depth: 18.57
     - _depth_multiplier: 0.0003
     - _refractionStrength: 0.2
     m_Colors:
     - _Color: {r: 0.1254902, g: 0.25490198, b: 0.28627452, a: 0.6745098}
-    - _Color_Deep: {r: 0, g: 0.13725486, b: 0.18039212, a: 1}
+    - _Color_Deep: {r: 0, g: 0.22969645, b: 0.3018868, a: 1}
     - _Color_Deep_1: {r: 0, g: 0.22066435, b: 0.49056596, a: 0}
-    - _Color_Shallow: {r: 0, g: 0.13725469, b: 0.18039194, a: 0.21176471}
+    - _Color_Shallow: {r: 0, g: 0.13725463, b: 0.18039188, a: 1}
   m_BuildTextureStacks: []

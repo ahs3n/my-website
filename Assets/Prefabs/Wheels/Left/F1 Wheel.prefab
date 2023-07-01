@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2744014577430574558}
   - component: {fileID: 1390949930156238721}
   - component: {fileID: 3847270638706546245}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: F1 Tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8004835870530423852}
   - component: {fileID: 8004835870530423850}
   - component: {fileID: 8004835870530423853}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: F1 Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 467534518326088143}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: F1 Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

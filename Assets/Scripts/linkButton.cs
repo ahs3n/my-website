@@ -26,7 +26,6 @@ public class linkButton : MonoBehaviour
     private Material selfMaterial;
 
     private Color originalColour;
-    private Transform originalTransform;
     private Quaternion originalRotation;
 
 
@@ -43,8 +42,7 @@ public class linkButton : MonoBehaviour
         selfMaterial.SetColor("_Color", inactiveColour);
 
         camera = GameObject.FindObjectOfType<Camera>().gameObject;
-        originalTransform = linkIcon.transform;
-        originalRotation = linkIcon.transform.rotation;
+        originalRotation = linkIcon.transform.localRotation;
 
         baseDistance = distance;
     }
@@ -99,6 +97,7 @@ public class linkButton : MonoBehaviour
             if (fade < precision)
             {
                 updateTransforms = false;
+                Debug.Log("Button returned");
             }
         }
 
@@ -119,7 +118,7 @@ public class linkButton : MonoBehaviour
 
             Vector3 dir = camera.transform.position - linkIcon.transform.position;
             //dir.y = 0; // keep the direction strictly horizontal; this is redundant with the last line in this block
-            Quaternion rot = active?Quaternion.LookRotation(dir):originalRotation;
+            Quaternion rot = active?Quaternion.LookRotation(dir):originalRotation * transform.rotation;
 
             linkIcon.transform.rotation = Quaternion.Slerp(linkIcon.transform.rotation, rot, speed);
             linkIcon.transform.localEulerAngles = new Vector3(Mathf.Lerp(0, 90, fade), linkIcon.transform.localEulerAngles.y, linkIcon.transform.localEulerAngles.z);

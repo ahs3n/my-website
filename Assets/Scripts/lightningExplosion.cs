@@ -31,12 +31,12 @@ public class lightningExplosion : MonoBehaviour
 
             Vector3 pos = collisionEvents[i].intersection;
 
-            foreach (GameObject car in user.cars)
-            {
-                rb = car.GetComponent<Rigidbody>();
-                rb.AddExplosionForce(500000, pos, 40);
+            //foreach (GameObject car in user.cars)
+            //{
+            //    rb = car.GetComponent<Rigidbody>();
+            //    rb.AddExplosionForce(500000, pos, 40);
 
-            }
+            //}
 
             i++;
         }

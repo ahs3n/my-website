@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Linq;
 
 
 [RequireComponent(typeof(Rigidbody))]
 public class player : MonoBehaviour
 {
 
-    [HideInInspector]
+    //[HideInInspector]
     public GameObject target;
     private carDriver targetController;
-    private int currentCarIndex = 0;
 
     [Space]
     public Slider verticalInputSlider;
@@ -22,9 +21,10 @@ public class player : MonoBehaviour
 
     [HideInInspector]
     public bool usingMobileControls = false;
+    [HideInInspector]
+    public float carSpeed = 0;
 
     private Rigidbody rb;
-    private SphereCollider camSpc;
     private float originalDrag;
     private bool followingTarget = true;
 
@@ -32,60 +32,48 @@ public class player : MonoBehaviour
 
     [Space]
     public float carSwitchDistance = 15;
-    public GameObject[] cars = new GameObject[3];
-    private carDriver[] carControllers = new carDriver[3];
+    private HashSet<carDriver> nearbyCars = new HashSet<carDriver>();
 
 
     [Space]
-    public float obstacleErrorCorrectionDistance = 10;
-    private float obECD = 100;
 
     private float timeScaling = 1;
 
     private bool right;
     private bool left;
+    private bool up;
+    private bool down;
 
     [HideInInspector]
     public bool particles = true;
+    [HideInInspector]
+    public float vertical = 0;
+    private float tvertical = 0;
+    [HideInInspector]
+    public float horizontal = 0;
+    private float thorizontal;
+    public float inputSpeed = 0.1f;
+    private float realInputSpeed = 0.1f;
+    private float inverseInputSpeed = 0.9f;
+
+    [HideInInspector]
+    public bool cruiseControl = false;
+    private float ccS = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        obECD = Mathf.Pow(obstacleErrorCorrectionDistance, 2);
-
-
-        target = cars[0];
-
-        carControllers = new carDriver[cars.Length];
-        for (int i = 0; i < cars.Length; i++)
-        {
-            carControllers[i] = cars[i].GetComponent<carDriver>();
-        }
-        targetController = carControllers[0];
-
-
+        targetController = target.GetComponent<carDriver>();
+        targetController.canControl = true;
+         
 
         rb = gameObject.GetComponent<Rigidbody>();
         originalDrag = rb.drag == 0 ? 5 : rb.drag;
 
-        if (speed < 0) speed = -speed;
-
-        for (int i = 0; i < cars.Length; i++)
-        {
-            if (cars[i] != target)
-            {
-                carControllers[i].canControl = false;
-            }
-            else
-            {
-                carControllers[i].canControl = true;
-            }
-        }
-
         StartCoroutine(Wait(followStartDelay));
 
-        camSpc = mainCam.GetComponent<SphereCollider>();
-
+        gameObject.transform.position = targetController.gameObject.transform.position;
+        SwitchCars(targetController);
     }
 
     // Update is called once per frame
@@ -95,20 +83,13 @@ public class player : MonoBehaviour
         {
             Vector3 vec = (target.transform.position - gameObject.transform.position);
             rb.AddForce(vec * speed);
-
-            if (vec.sqrMagnitude > obECD)
-            {
-                camSpc.isTrigger = true;
-            }
-            else
-            {
-                camSpc.isTrigger = false;
-            }
         }
     }
 
     void Update()
     {
+        carSpeed = targetController.speed;
+
         if (Input.GetKeyDown(KeyCode.R) && ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))))
         {
             rb.drag = 15;
@@ -116,25 +97,19 @@ public class player : MonoBehaviour
         }
 
         //Locating nearest other car when E is clicked
-        float distanceOfClosestCar = carSwitchDistance * carSwitchDistance;
         if (Input.GetKeyDown(KeyCode.E))
         {
-            for (int i = 0; i < cars.Length; i++)
+            Dictionary<carDriver, float> dists = new Dictionary<carDriver, float>();
+            float dist = 0;
+            foreach (carDriver car in nearbyCars)
             {
-                float dist = (cars[i].gameObject.transform.position - target.transform.position).sqrMagnitude;
-                if (dist < distanceOfClosestCar  && cars[i] != target)
-                {
-                    distanceOfClosestCar = dist;
-                    currentCarIndex = i;
-                }
+                dist = (car.transform.position - target.transform.position).sqrMagnitude;
+                dists.Add(car, dist);
             }
+            var sorted = dists.OrderBy(pair => pair.Value).Take(2);
+            SwitchCars(sorted.ElementAt(1).Key);
         }
-        //Assigning new target
-        if (cars[currentCarIndex] != target)
-        {
-            Debug.Log("Switching to car at index " + currentCarIndex.ToString());
-            SwitchCars(currentCarIndex);
-        }
+        
 
         //set mobile controls if touch input
         if (!usingMobileControls)
@@ -155,26 +130,45 @@ public class player : MonoBehaviour
         }
 
         if (usingMobileControls && !mobileControls.activeSelf) { mobileControls.SetActive(true); }
-        else if (!usingMobileControls && mobileControls.activeSelf) { mobileControls.SetActive(false); }   //FIX ME
+        else if (!usingMobileControls && mobileControls.activeSelf) { mobileControls.SetActive(false); }
 
-
-        if (right)
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            //targetController.horizontal = 1;
-            targetController.right();
+            cruiseControl = !cruiseControl;
+            if (cruiseControl) ccS = targetController.speed;
         }
-        if (left)
+        thorizontal = 0;
+        tvertical = 0;
+        if (usingMobileControls)
         {
-            //targetController.horizontal = -1;
-            targetController.left();
+
+            if (right) thorizontal += 1;
+            if (left) thorizontal -= 1;
+
+            if (up) tvertical += 1;
+            if (down) tvertical -= 1;
+
+        } else {
+
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) tvertical += 1;
+            if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) tvertical -= 1;
+
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) thorizontal -= 1;
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) thorizontal += 1;
+
         }
-        if (!left && !right && usingMobileControls)
-        {
-            targetController.horizontal = 0;
-        }
 
 
+        bool x = Mathf.Abs(horizontal) - Mathf.Abs(thorizontal) < 0;
 
+        realInputSpeed = x?inputSpeed / Mathf.Max(targetController.speed*inputSpeed*2, 1):inputSpeed;
+
+        inverseInputSpeed = 1 - realInputSpeed;
+        horizontal = thorizontal * realInputSpeed + horizontal * inverseInputSpeed;
+        vertical = tvertical * realInputSpeed + vertical * inverseInputSpeed;
+
+        if (cruiseControl && targetController.speed > ccS) vertical = 0;
+        else if (cruiseControl) vertical = 1;
 
 
 
@@ -202,21 +196,22 @@ public class player : MonoBehaviour
         {
             timeScaling = 0.0f;
         }
-
-        Time.timeScale = timeScaling;
-        Time.fixedDeltaTime = 0.02f * (timeScaling==0?1.0f:timeScaling);
+        if (timeScaling != Time.timeScale) {
+            Time.timeScale = timeScaling;
+            Time.fixedDeltaTime = 0.02f * (timeScaling==0?1.0f:timeScaling);
+        }
 
     }
 
-    void SwitchCars(int index)
+    void SwitchCars(carDriver t)
     {
-        target = cars[index];
         //Disable previous car
         targetController.canControl = false;
 
         //Assign new car controller and enable it
-        targetController = carControllers[index];
+        targetController = t;
         targetController.canControl = true;
+        target = targetController.gameObject;
 
         rb.drag = 15;
         StartCoroutine(Wait(1));
@@ -229,6 +224,21 @@ public class player : MonoBehaviour
     }
 
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Car"))
+        {
+            nearbyCars.Add(other.GetComponentInParent<carDriver>());
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Car"))
+        {
+            nearbyCars.Remove(other.GetComponentInParent<carDriver>());
+        }
+    }
 
 
     public void leftDown()
@@ -248,6 +258,7 @@ public class player : MonoBehaviour
     {
         right = false;
     }
+
     public void resetVerticalInput()
     {
         verticalInputSlider.value = 0;
@@ -259,6 +270,22 @@ public class player : MonoBehaviour
         targetController.vertical = verticalInputSlider.value;
     }
 
+    public void upDown()
+    {
+        up = true;
+    }
+    public void downDown()
+    {
+        down = true;
+    }
 
+    public void upUp()
+    {
+        up = false;
+    }
+    public void downUp()
+    {
+        down = false;
+    }
 
 }

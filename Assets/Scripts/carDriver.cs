@@ -74,7 +74,7 @@ public class carDriver : MonoBehaviour
 
     [HideInInspector]
     public List<GameObject> graphicalSteeringWheels;
-    public float wheelRadius = 0.5f;
+    public float wheelDiameter = 0.5f;
 
 
     public GameObject driftParticles;
@@ -216,6 +216,7 @@ public class carDriver : MonoBehaviour
     float totalSlip;
     float lastfV = 0;
     float poweredfV = 0;
+    float surfaceFriction = 1;
 
     void FixedUpdate()
     {
@@ -294,6 +295,7 @@ public class carDriver : MonoBehaviour
             if (Physics.Raycast(wheel.transform.position, -wheel.transform.up, out rayHit, suspensionDistance, ~raycastIgnoreLayers))
             {
                 grounded = true;
+                surfaceFriction = rayHit.collider.material.dynamicFriction * 1.5f;
 
                 Vector3 totalForce = Vector3.zero;
                 //overall force applied, excluding suspension
@@ -318,7 +320,7 @@ public class carDriver : MonoBehaviour
                     {
 
                         totalForce += vertical * Vector3.Cross(rayHit.normal, wheel.transform.right)
-                            * power * (braking ? 0 : 1) * rb.mass
+                            * power * (braking ? 0 : 1)
                             + wheel.transform.right * steerAmount
                             * accelerationCurve.Evaluate(speed / accelerationEvaluationMax);
 
@@ -351,7 +353,7 @@ public class carDriver : MonoBehaviour
                 if (powered) neutral += Mathf.Abs(vertical) * spinningWheelsGrip;
 
                 sfR = wheelFrictionCurve.Evaluate(Mathf.Abs((sV /*maybe incorporate forward slip in here when you have a proper plan*/ )/curveEvaluationMax)) * curveMultiplier * svN * neutral;
-                totalForce += sideVector * sfR * sidewaysFrictionMultiplier * rb.mass;
+                totalForce += sideVector * sfR * sidewaysFrictionMultiplier;
 
 
 
@@ -362,8 +364,8 @@ public class carDriver : MonoBehaviour
 
                 totalForce += forwardVector *
                     (
-                        f * compression * rb.mass * -fV +
-                        rb.mass * baseF * -(Mathf.Clamp(fV, -1, 1))
+                        f * compression * -fV +
+                        baseF * -(Mathf.Clamp(fV, -1, 1))
                     );
 
                 totalSlip = forwardSlip + Mathf.Abs(sV);
@@ -375,15 +377,16 @@ public class carDriver : MonoBehaviour
                 Debug.DrawRay(wheel.transform.position, forwardVector * (suspensionDistance * -vertical - suspensionDistance / 2), Color.green);
                 Debug.DrawRay(wheel.transform.position, sideVector * sV, Color.red);
 
-                
 
-                rb.AddForceAtPosition(totalForce, wheel.transform.position);
+                float fc = rb.mass * surfaceFriction;
+
+                rb.AddForceAtPosition(totalForce*fc, wheel.transform.position);
                 rb.AddForceAtPosition(rayHit.normal * force * rb.mass, rayHit.point);
 
                 if (rayHit.rigidbody != null)
                 {
                     rayHit.rigidbody.AddForceAtPosition(-rayHit.normal * force * rb.mass, rayHit.point);
-                    rayHit.rigidbody.AddForceAtPosition(-totalForce, rayHit.point);
+                    rayHit.rigidbody.AddForceAtPosition(-totalForce*fc, rayHit.point);
                 }
                 //Two way coupling.  Has minimal visible effect.  Maybe reenable later if there's some monster trucks driving over cars...
 
@@ -402,14 +405,12 @@ public class carDriver : MonoBehaviour
             poweredfV = braking ? 0 : poweredfV;
             fV = lastfV;
 
-            if (powered && !wheelGrounded) poweredfV = -vertical + poweredfV * 0.99f;
-            if (powered && !wheelGrounded) fV = poweredfV;
-            //if (Mathf.Abs(vertical) > 0 && powered) poweredfV = vertical + poweredfV * 0.99f; fV = poweredfV; //Simplification of lerp(lastfV, 100, 0.01)
+            if (powered && !wheelGrounded) poweredfV = -vertical + poweredfV * 0.99f; fV = poweredfV;
 
 
             GameObject gWheel = physicsGraphicsPair[wheel];
-            gWheel.transform.localPosition = gWheelsOriginalPos[gWheel] + (gWheel.transform.InverseTransformDirection(wheel.transform.up) * (compression*suspensionDistance-suspensionDistance + wheelRadius));
-            gWheel.transform.GetChild(0).GetChild(0).RotateAround(gWheel.transform.position, gWheel.transform.right, (braking ? 0 : Time.fixedDeltaTime * fV * 50 / wheelRadius));
+            gWheel.transform.localPosition = gWheelsOriginalPos[gWheel] + (gWheel.transform.InverseTransformDirection(wheel.transform.up) * (compression*suspensionDistance-suspensionDistance + wheelDiameter));
+            gWheel.transform.GetChild(0).GetChild(0).RotateAround(gWheel.transform.position, gWheel.transform.right, (braking ? 0 : Time.fixedDeltaTime * fV * 50 / (wheelDiameter * (powered && Mathf.Abs(vertical) > 0.1?surfaceFriction:1))));
 
 
 
@@ -435,48 +436,13 @@ public class carDriver : MonoBehaviour
         if (Input.anyKeyDown)
         {
             masterController.usingMobileControls = false;
-
         }
 
 
         if (canControl)
         {
-            //vertical = Input.GetAxis("Vertical");
-            //horizontal = Input.GetAxis("Horizontal");
-
-            effectiveHorizontalInputIncrement = horizontalInputIncrement / Mathf.Max(1, speed / 20);
-
-            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
-            {
-                forward();
-            }
-            else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-            {
-                back();
-            }
-            else if (!masterController.usingMobileControls)
-            {
-                if (vertical > 0) { vertical -= Mathf.Min(Mathf.Abs(0 - vertical), Mathf.Abs(verticalInputDecay)); }
-                if (vertical < 0) { vertical += Mathf.Min(Mathf.Abs(0 - vertical), Mathf.Abs(verticalInputDecay)); }
-            }
-
-            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-            {
-                left();
-            }
-            else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-            {
-                right();
-            }
-            else if (!masterController.usingMobileControls)
-            {
-                //if (horizontal < 0) { horizontal += horizontalInputDecay; }
-                //if (horizontal > 0) { horizontal -= horizontalInputDecay; }
-                if (horizontal < 0) { horizontal += Mathf.Min(Mathf.Abs(0 - horizontal), Mathf.Abs(horizontalInputDecay)); }
-                if (horizontal > 0) { horizontal -= Mathf.Min(Mathf.Abs(0 - horizontal), Mathf.Abs(horizontalInputDecay)); }//This version ensures that the input is never stuck at a value near but != 0, leading to the car either driving forward on its own,
-                                                                                                                            //failing to brake, off centre steering, etc.  Prevents nightmares. DO NOT REMOVE.
-            }
-
+            vertical = masterController.vertical;
+            horizontal = masterController.horizontal;
 
 
             brake = Input.GetKey(KeyCode.Space) ? Mathf.Lerp(brake, 1, 0.02f) : 0;
@@ -487,7 +453,8 @@ public class carDriver : MonoBehaviour
         }
         else
         {
-            vertical = 0f;
+            vertical = 0;
+            horizontal = 0;
             braking = true;
         }
 
@@ -562,39 +529,9 @@ public class carDriver : MonoBehaviour
             if (Application.isPlaying)
             {
                 Gizmos.color = Color.yellow;
-                Gizmos.DrawCube(rb.centerOfMass + CGOffset, Vector3.one * 0.5f);
+                Gizmos.DrawCube(gameObject.transform.TransformPoint(rb.centerOfMass + CGOffset), Vector3.one * 0.5f);
             }
         }
     }
-
-    public void forward()
-    {
-        vertical = vertical < 1 ? vertical + verticalInputIncrement * Time.deltaTime : vertical;
-        if (vertical < 0) { vertical += verticalInputDecay * Time.deltaTime; }
-
-    }
-    public void back()
-    {
-        vertical = vertical > -1 ? vertical - verticalInputIncrement * Time.deltaTime : vertical;
-        if (vertical > 0) { vertical -= verticalInputDecay * Time.deltaTime; }
-
-    }
-
-
-    public void right()
-    {
-        horizontal = horizontal < 1 ? horizontal + effectiveHorizontalInputIncrement * Time.deltaTime : horizontal;
-        if (horizontal < 0) { horizontal += horizontalInputDecay * Time.deltaTime; }
-
-    }
-    public void left()
-    {
-        horizontal = horizontal > -1 ? horizontal - effectiveHorizontalInputIncrement * Time.deltaTime : horizontal;
-        if (horizontal > 0) { horizontal -= horizontalInputDecay * Time.deltaTime; }
-
-    }
-
-
-
 }
 

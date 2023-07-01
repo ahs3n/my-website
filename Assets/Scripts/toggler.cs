@@ -37,6 +37,11 @@ public class toggler : MonoBehaviour
         {
             rb.AddRelativeForce(activeAxis * p * rb.mass);
         }
+        else
+        {
+            Debug.Log("not pushing");
+
+        }
 
         if (p<0 && on)
         {
