@@ -21,9 +21,6 @@ public class downforce : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //RaycastHit rayHit;
-        //if (Physics.Raycast(gameObject.transform.position, gameObject.transform.position - Vector3.up, out rayHit, 100))
-        //{ }
-        rb.AddForce(Vector3.down * constForce + Vector3.down * car.speed * multiplier);//*/ * rayHit.distance);
+        if (car.grounded) rb.AddForce(Vector3.down * constForce + Vector3.down * car.speed * multiplier);
     }
 }

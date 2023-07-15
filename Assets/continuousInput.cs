@@ -26,7 +26,8 @@ public class continuousInput : MonoBehaviour
         masterVolume,
         DOFStrength,
         Resolution,
-        Antialias
+        Antialias,
+        CameraFarPlane
     }
     [SerializeField] private valueAdjust valueToAdjust;
 
@@ -34,12 +35,14 @@ public class continuousInput : MonoBehaviour
     public Vector3 activeAxis = Vector3.right;
 
     private Rigidbody rb;
+    private float s = 1;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         originalPos = gameObject.transform.position;
+        s = gameObject.transform.root.localScale.x;
 
         StartCoroutine(wait());
     }
@@ -61,7 +64,7 @@ public class continuousInput : MonoBehaviour
 
     void stuff()
     {
-        float p = start + multiplier * Vector3.Dot(activeAxis, gameObject.transform.position - originalPos);
+        float p = start + multiplier * Vector3.Dot(activeAxis, (gameObject.transform.position - originalPos) / s);
         //Debug.Log(p);
 
 
@@ -82,9 +85,17 @@ public class continuousInput : MonoBehaviour
                 break;
             case valueAdjust.Resolution:
                 commandCentre.renderer.renderScale = p;
+                Debug.Log(p.ToString());
                 break;
             case valueAdjust.Antialias:
                 commandCentre.renderer.msaaSampleCount = p<1?1:p<2?2:p<3?4:8;
+                break;
+            case valueAdjust.CameraFarPlane:
+                commandCentre.cam.farClipPlane = p*p;
+                foreach (ReflectionProbe probe in GameObject.FindObjectsOfType<ReflectionProbe>())
+                {
+                    probe.farClipPlane = p * p;
+                }
                 break;
         }
 

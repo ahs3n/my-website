@@ -35,7 +35,7 @@ public class carLights : MonoBehaviour
 
 
     public GameObject lights;
-    public GetMyWeather weather;
+    //public GetMyWeather weather;
 
     void Start()
     {

@@ -53,6 +53,7 @@ public class player : MonoBehaviour
     public float horizontal = 0;
     private float thorizontal;
     public float inputSpeed = 0.1f;
+    public float inputFalloff = 0.2f;
     private float realInputSpeed = 0.1f;
     private float inverseInputSpeed = 0.9f;
 
@@ -161,20 +162,22 @@ public class player : MonoBehaviour
 
         bool x = Mathf.Abs(horizontal) - Mathf.Abs(thorizontal) < 0;
 
-        realInputSpeed = x?inputSpeed / Mathf.Max(targetController.speed*inputSpeed*2, 1):inputSpeed;
+        realInputSpeed = x?inputSpeed / Mathf.Max(targetController.speed*inputFalloff, 1):inputSpeed;
 
         inverseInputSpeed = 1 - realInputSpeed;
         horizontal = thorizontal * realInputSpeed + horizontal * inverseInputSpeed;
         vertical = tvertical * realInputSpeed + vertical * inverseInputSpeed;
 
-        if (cruiseControl && targetController.speed > ccS) vertical = 0;
-        else if (cruiseControl) vertical = 1;
+        if (cruiseControl) {
+            if (targetController.speed > ccS) vertical = 0;
+            else vertical = 1;
+        }
 
 
 
         if (Input.GetKeyDown(KeyCode.T))
         {
-            timeScaling = 1; ;
+            timeScaling = 1;
         }
         if (Input.GetKeyDown(KeyCode.Y))
         {
@@ -198,7 +201,8 @@ public class player : MonoBehaviour
         }
         if (timeScaling != Time.timeScale) {
             Time.timeScale = timeScaling;
-            Time.fixedDeltaTime = 0.02f * (timeScaling==0?1.0f:timeScaling);
+            Time.fixedDeltaTime = 0.04f * (timeScaling==0?1:timeScaling);
+            //default is 0.02f, adjusted for performance
         }
 
     }

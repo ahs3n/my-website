@@ -40,7 +40,6 @@ public class toggler : MonoBehaviour
         else
         {
             Debug.Log("not pushing");
-
         }
 
         if (p<0 && on)

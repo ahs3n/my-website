@@ -16,6 +16,7 @@ public class gameLogic : MonoBehaviour
     public player controller;
     public camController camControl;
     public UniversalRenderPipelineAsset renderer;
+    public ReflectionProbe reflectionProbe;
     public Volume volume;
     [HideInInspector]
     public Bloom bloom;
@@ -26,7 +27,7 @@ public class gameLogic : MonoBehaviour
     [HideInInspector]
     public ChromaticAberration chromatic;
 
-    public GameObject cam;
+    public Camera cam;
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +52,7 @@ public class gameLogic : MonoBehaviour
 
         if (cam == null)
         {
-            cam = GameObject.FindObjectOfType<Camera>().gameObject;
+            cam = GameObject.FindObjectOfType<Camera>();
             Debug.Log("Camera is null, you might want to assign that.");
 
         }
@@ -65,13 +66,15 @@ public class gameLogic : MonoBehaviour
             FPSCounter.enabled = !FPSCounter.enabled;
         }
 
-        if (Time.frameCount < 10 || lastFPS == float.NaN) { lastFPS = 5f; }
-        lastFPS = Mathf.Lerp(1 / Time.smoothDeltaTime, lastFPS, 0.99f) * Time.timeScale;
+        if (Time.frameCount < 10 || float.IsNaN(lastFPS)) { lastFPS = 5f; }
+        lastFPS = Mathf.Lerp(1 / Time.smoothDeltaTime, lastFPS, 0.99f);
         FPSCounter.text = "FPS: " + Mathf.Round(lastFPS).ToString();
 
         KMHCounter.text = Mathf.Round(controller.carSpeed*3.6f).ToString() + " km/h";
 
         CCIndicator.active = controller.cruiseControl;
+
+        reflectionProbe.transform.position = controller.target.transform.position;
 
         if (DoF.active)
         {
@@ -172,4 +175,20 @@ public class gameLogic : MonoBehaviour
 
 
 
+    public void reflectionsOff()
+    {
+        //reflectionProbe.enabled = false;
+        foreach(ReflectionProbe probe in GameObject.FindObjectsOfType<ReflectionProbe>())
+        {
+            probe.enabled = false;
+        }
+    }
+
+    public void reflectionsOn()
+    {
+        foreach (ReflectionProbe probe in GameObject.FindObjectsOfType<ReflectionProbe>())
+        {
+            probe.enabled = true;
+        }
+    }
 }

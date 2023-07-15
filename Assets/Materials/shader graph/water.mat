@@ -67,7 +67,7 @@ Material:
     - _Noise_Strength_Opposite: 0.31
     - _QueueControl: 0
     - _QueueOffset: -50
-    - _Rate_of_Change: 0.007
+    - _Rate_of_Change: 0.005
     - _RelativeStrength: 0.5
     - _Speed_1: 0.01
     - _Speed_2: -0.01
@@ -79,7 +79,7 @@ Material:
     - _refractionStrength: 0.2
     m_Colors:
     - _Color: {r: 0.1254902, g: 0.25490198, b: 0.28627452, a: 0.6745098}
-    - _Color_Deep: {r: 0, g: 0.22969645, b: 0.3018868, a: 1}
+    - _Color_Deep: {r: 0, g: 0.21753614, b: 0.26415092, a: 1}
     - _Color_Deep_1: {r: 0, g: 0.22066435, b: 0.49056596, a: 0}
     - _Color_Shallow: {r: 0, g: 0.13725463, b: 0.18039188, a: 1}
   m_BuildTextureStacks: []

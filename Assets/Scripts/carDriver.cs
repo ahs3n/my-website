@@ -110,7 +110,7 @@ public class carDriver : MonoBehaviour
     /// </summary>
     public float speed;
 
-
+    public float downforce = 0;
 
     private Vector3 startLocation;
     private Quaternion startRotation;
@@ -137,9 +137,11 @@ public class carDriver : MonoBehaviour
     {
         masterController.usingMobileControls = false;
         rb = gameObject.GetComponent<Rigidbody>();
+        rb.solverIterations = 4;
+
         startLocation = gameObject.transform.position;
         startRotation = gameObject.transform.rotation;
-
+        
 
         rb.ResetCenterOfMass();
         rb.centerOfMass = rb.centerOfMass + CGOffset;
@@ -152,15 +154,6 @@ public class carDriver : MonoBehaviour
 
         foreach (GameObject wheel in Wheels)
         {
-            //GameObject closest = gameObject;
-            //foreach (GameObject gWheel in graphicalWheels)
-            //{
-            //    if ((gWheel.transform.position-wheel.transform.position).sqrMagnitude < (wheel.transform.position-closest.transform.position).sqrMagnitude)
-            //    {
-            //        closest = gWheel;
-            //    }
-            //}
-            //physicsGraphicsPair.Add(wheel, closest);
             GameObject gWheel = wheel.transform.GetChild(0).gameObject;
             physicsGraphicsPair.Add(wheel, gWheel);
             gWheelsOriginalPos.Add(gWheel, gWheel.transform.localPosition);
@@ -173,13 +166,6 @@ public class carDriver : MonoBehaviour
                 }
             }
         }
-
-        //foreach (GameObject gWheel in graphicalWheels)
-        //{
-        //    Vector3 newVec = gWheel.transform.localPosition;
-        //    vectorsList.Add(newVec);
-        //    gWheelsOriginalPos.Add(gWheel, newVec);
-        //}
 
         foreach(GameObject wheel in Wheels)
         {
@@ -239,6 +225,7 @@ public class carDriver : MonoBehaviour
             stepsSinceGrounded++;
         }
 
+        // Lift
         rb.AddForce(Vector3.Dot(rb.velocity, gameObject.transform.up) * transform.up * -liftCoefficient * rb.mass);
                 
         grounded = false;
@@ -254,7 +241,8 @@ public class carDriver : MonoBehaviour
         baseF = brakeTorqueBase;
         totalSlip = 0;
 
-        steerAmount = (horizontal / 2);//  / Mathf.Max(1, speed / 20);
+        steerAmount = (horizontal / 2);
+
 
 
         foreach (GameObject wheel in Wheels)
@@ -319,11 +307,12 @@ public class carDriver : MonoBehaviour
                     if (powered)
                     {
 
-                        totalForce += vertical * Vector3.Cross(rayHit.normal, wheel.transform.right)
-                            * power * (braking ? 0 : 1)
-                            + wheel.transform.right * steerAmount
-                            * accelerationCurve.Evaluate(speed / accelerationEvaluationMax);
-
+                        totalForce += (
+                                vertical * Vector3.Cross(rayHit.normal, wheel.transform.right)
+                                * power * (braking ? 0 : 1)
+                                + wheel.transform.right * steerAmount
+                            ) * accelerationCurve.Evaluate(speed / accelerationEvaluationMax);
+                        //Debug.Log(accelerationCurve.Evaluate(speed / accelerationEvaluationMax).ToString());
 
                     }
 
@@ -352,13 +341,13 @@ public class carDriver : MonoBehaviour
 
                 if (powered) neutral += Mathf.Abs(vertical) * spinningWheelsGrip;
 
-                sfR = wheelFrictionCurve.Evaluate(Mathf.Abs((sV /*maybe incorporate forward slip in here when you have a proper plan*/ )/curveEvaluationMax)) * curveMultiplier * svN * neutral;
+                sfR = wheelFrictionCurve.Evaluate(Mathf.Abs((sV )/curveEvaluationMax)) * curveMultiplier * svN * neutral;
                 totalForce += sideVector * sfR * sidewaysFrictionMultiplier;
 
 
 
                 //braking
-                f = braking && !(brake > 0)? brakeTorque : brake*brakeTorque;//'braking &&' exists so that it the car will stop when not being controlled. Don't try to understand it unless you want a headache
+                f = braking && !(brake > 0)? brakeTorque : brake*brakeTorque;//'braking &&' exists so that it the car will stop when not being controlled. Don't try to understand it unless you want a headache. I don't understand it myself until I have to
                 fV = Mathf.Abs(fV) < 0.01 ? 0.01f : fV;
                 baseF = braking ? brakeTorqueBase : 0;
 
@@ -378,7 +367,9 @@ public class carDriver : MonoBehaviour
                 Debug.DrawRay(wheel.transform.position, sideVector * sV, Color.red);
 
 
-                float fc = rb.mass * surfaceFriction;
+                float fc = rb.mass
+                    * surfaceFriction                    // Friction ofc
+                    + Mathf.Max(1, downforce * speed);  // Additional grip from downforce
 
                 rb.AddForceAtPosition(totalForce*fc, wheel.transform.position);
                 rb.AddForceAtPosition(rayHit.normal * force * rb.mass, rayHit.point);
@@ -388,7 +379,6 @@ public class carDriver : MonoBehaviour
                     rayHit.rigidbody.AddForceAtPosition(-rayHit.normal * force * rb.mass, rayHit.point);
                     rayHit.rigidbody.AddForceAtPosition(-totalForce*fc, rayHit.point);
                 }
-                //Two way coupling.  Has minimal visible effect.  Maybe reenable later if there's some monster trucks driving over cars...
 
                 lastfV = fV;
                 poweredfV = fV;
@@ -415,6 +405,10 @@ public class carDriver : MonoBehaviour
 
 
         }
+
+        if (grounded) rb.AddForce(-gameObject.transform.up * downforce * speed * rb.mass);
+        // Downforce
+
 
         //rb.angularDrag = grounded ? baseAngularDrag + angularDragMultiplier * speed: rb.angularDrag;
 
