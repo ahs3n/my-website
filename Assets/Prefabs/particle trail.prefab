@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3949417285130209377}
   - component: {fileID: 3949417285130209376}
   m_Layer: 0
-  m_Name: drift trail
+  m_Name: particle trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

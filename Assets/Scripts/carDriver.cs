@@ -28,11 +28,6 @@ public class carDriver : MonoBehaviour
     private float baseAngularDrag;
 
     [Space]
-    private float verticalInputIncrement = 10.0f;
-    private float horizontalInputIncrement = 10.0f;
-    private float effectiveHorizontalInputIncrement = 10.0f;
-    private float verticalInputDecay = 10.0f;
-    private float horizontalInputDecay = 10.0f;
     public float liftCoefficient = 0.2f;
     //[HideInInspector]
     //public bool usingMobileControls = false;//This variable is enabled by the use of the mobile controls, and disabled by the use of the keyboard.  
@@ -71,6 +66,7 @@ public class carDriver : MonoBehaviour
     private Dictionary<GameObject, GameObject> physicsGraphicsPair = new Dictionary<GameObject, GameObject>();
     private Dictionary<GameObject, Vector3> gWheelsOriginalPos = new Dictionary<GameObject, Vector3>();
     private Dictionary<GameObject, ParticleSystem.EmissionModule> wheelsParticlesPair = new Dictionary<GameObject, ParticleSystem.EmissionModule>();
+    private Dictionary<GameObject, TrailRenderer> wheelsTrailsPair = new Dictionary<GameObject, TrailRenderer>();
 
     [HideInInspector]
     public List<GameObject> graphicalSteeringWheels;
@@ -81,6 +77,7 @@ public class carDriver : MonoBehaviour
     public GameObject sparkParticles;
     private GameObject sparks;
     private ParticleSystem.EmissionModule sparkEmission;
+    public GameObject driftTrails;
 
     [Space]
 
@@ -172,6 +169,12 @@ public class carDriver : MonoBehaviour
             GameObject particleThingy = Instantiate(driftParticles, wheel.transform.position, Quaternion.identity, wheel.transform);
             particleThingy.transform.localScale *= physicsGraphicsPair[wheel].transform.localScale.x;
             wheelsParticlesPair.Add(wheel, particleThingy.GetComponent<ParticleSystem>().emission);
+
+            var trailThingy = Instantiate(driftTrails, wheel.transform.position, Quaternion.identity, wheel.transform).GetComponent<TrailRenderer>();
+            //trailThingy.transform.localScale *= physicsGraphicsPair[wheel].transform.localScale.x;
+            trailThingy.widthMultiplier = physicsGraphicsPair[wheel].transform.localScale.x;
+            trailThingy.transform.localEulerAngles = new Vector3(90, 0, 0);
+            wheelsTrailsPair.Add(wheel, trailThingy);
 
         }
 
@@ -382,13 +385,17 @@ public class carDriver : MonoBehaviour
 
                 lastfV = fV;
                 poweredfV = fV;
+
+                wheelsTrailsPair[wheel].transform.position = rayHit.point + rayHit.normal * 0.1f;
             }
             Debug.DrawRay(wheel.transform.position, -wheel.transform.up * suspensionDistance, Color.blue);
 
 
 
             var emissionRules = wheelsParticlesPair[wheel];
-            emissionRules.enabled = (masterController.particles && totalSlip > 10 ? true : false);
+            emissionRules.enabled = masterController.particles && totalSlip > 10;
+            var trail = wheelsTrailsPair[wheel];
+            trail.emitting = totalSlip > 9;
 
             bool wheelGrounded = (suspensionDistance - rayHit.distance) / suspensionDistance < 0.99f;
             lastfV = braking ? 0 :lastfV;
@@ -401,7 +408,8 @@ public class carDriver : MonoBehaviour
             GameObject gWheel = physicsGraphicsPair[wheel];
             gWheel.transform.localPosition = gWheelsOriginalPos[gWheel] + (gWheel.transform.InverseTransformDirection(wheel.transform.up) * (compression*suspensionDistance-suspensionDistance + wheelDiameter));
             gWheel.transform.GetChild(0).GetChild(0).RotateAround(gWheel.transform.position, gWheel.transform.right, (braking ? 0 : Time.fixedDeltaTime * fV * 50 / (wheelDiameter * (powered && Mathf.Abs(vertical) > 0.1?surfaceFriction:1))));
-
+            
+            // FIGURE OUT WHY IT STARTS WOBBLING AFTER A WHILE OF USE. CUMULATIVE FLOATING POINT PRECISION ERRORS PROBABLY, BUT WHERE?
 
 
         }

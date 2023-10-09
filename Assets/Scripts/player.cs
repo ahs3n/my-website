@@ -11,7 +11,8 @@ public class player : MonoBehaviour
 
     //[HideInInspector]
     public GameObject target;
-    private carDriver targetController;
+    [HideInInspector]
+    public carDriver targetController;
 
     [Space]
     public Slider verticalInputSlider;

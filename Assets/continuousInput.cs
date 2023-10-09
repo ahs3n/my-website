@@ -84,11 +84,11 @@ public class continuousInput : MonoBehaviour
                 commandCentre.DoF.aperture.value = p;
                 break;
             case valueAdjust.Resolution:
-                commandCentre.renderer.renderScale = p;
-                Debug.Log(p.ToString());
+                commandCentre.rendering.renderScale = p;
+                //Debug.Log(p.ToString());
                 break;
             case valueAdjust.Antialias:
-                commandCentre.renderer.msaaSampleCount = p<1?1:p<2?2:p<3?4:8;
+                commandCentre.rendering.msaaSampleCount = p<1?1:p<2?2:p<3?4:8;
                 break;
             case valueAdjust.CameraFarPlane:
                 commandCentre.cam.farClipPlane = p*p;
@@ -96,8 +96,7 @@ public class continuousInput : MonoBehaviour
                 {
                     probe.farClipPlane = p * p;
                 }
-                break;
+                break;                
         }
-
     }
 }

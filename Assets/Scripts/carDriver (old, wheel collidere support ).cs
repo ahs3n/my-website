@@ -234,7 +234,7 @@ public class carDriverOld : MonoBehaviour
         else
         {
 
-            float k = 10f;//spring 'tightness'
+            //float k = 10f;//spring 'tightness'
             float b = 0.8f;//damping coefficient
 
             float compression = 0;//x = suspensionDistance - rayHit.distance

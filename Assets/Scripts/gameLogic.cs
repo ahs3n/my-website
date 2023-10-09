@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 
+
 public class gameLogic : MonoBehaviour
 {
     public Text FPSCounter;
@@ -15,7 +16,7 @@ public class gameLogic : MonoBehaviour
     private float lastFPS = 60f;
     public player controller;
     public camController camControl;
-    public UniversalRenderPipelineAsset renderer;
+    public UniversalRenderPipelineAsset rendering;
     public ReflectionProbe reflectionProbe;
     public Volume volume;
     [HideInInspector]
@@ -72,7 +73,7 @@ public class gameLogic : MonoBehaviour
 
         KMHCounter.text = Mathf.Round(controller.carSpeed*3.6f).ToString() + " km/h";
 
-        CCIndicator.active = controller.cruiseControl;
+        CCIndicator.SetActive(controller.cruiseControl);
 
         reflectionProbe.transform.position = controller.target.transform.position;
 
@@ -173,7 +174,14 @@ public class gameLogic : MonoBehaviour
         }
     }
 
-
+    public void primaryReflectionsOn()
+    {
+        reflectionProbe.enabled = true;
+    }
+    public void primaryReflectionsOff()
+    {
+        reflectionProbe.enabled = false;
+    }
 
     public void reflectionsOff()
     {

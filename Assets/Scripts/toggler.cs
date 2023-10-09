@@ -11,12 +11,15 @@ public class toggler : MonoBehaviour
     public UnityEvent toggleOff;
 
     public float limit = 0.525f;
+    public float toggleForce = 5;
 
     public Vector3 activeAxis = Vector3.right;
 
+
     private Rigidbody rb;
 
-    private bool on = true;
+    [HideInInspector]
+    public bool on = true;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +29,9 @@ public class toggler : MonoBehaviour
         if (p < 0)
         {
             on = false;
+            toggleOff.Invoke();
+        } else {
+            toggleOn.Invoke();
         }
     }
 
@@ -52,5 +58,20 @@ public class toggler : MonoBehaviour
             on = true;
             toggleOn.Invoke();
         }
+
+        //if (Input.GetKeyDown(KeyCode.B)) toggle();
+    }
+
+    public void toggle()
+    {
+        rb.AddForce((on ? -toggleForce : toggleForce) * activeAxis, ForceMode.VelocityChange);
+        //Debug.Log("Toggled " + (on?"On":"Off"));
+    }
+
+    public void onIt(){
+        if (!on) toggle();
+    }
+    public void offIt(){
+        if (on) toggle();
     }
 }

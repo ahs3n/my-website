@@ -11,6 +11,7 @@ public class knobLabel : MonoBehaviour
     public float precision = 0.005f;
 
     private bool hidden = false;
+    private bool move = false;
     private GameObject cam;
 
 
@@ -18,17 +19,21 @@ public class knobLabel : MonoBehaviour
     void Start()
     {
         originalPos = label.transform.localPosition;
-        cam = GameObject.FindObjectOfType<player>().GetComponentInChildren<Camera>().gameObject;
+        cam = FindObjectOfType<player>().GetComponentInChildren<Camera>().gameObject;
         hidden = true;
+        move = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if ((label.transform.localPosition - (originalPos + (hidden ? maxDisplacement : Vector3.zero))).sqrMagnitude > precision)
-        {
+        if (move && (label.transform.localPosition - (originalPos + (hidden ? maxDisplacement : Vector3.zero))).sqrMagnitude > precision){
             label.transform.localPosition = label.transform.localPosition * (1-speed) + speed * (originalPos + (hidden ? maxDisplacement : Vector3.zero));
+        } else {
+            move = false;
         }
+
+        label.transform.LookAt(cam.transform.position);
+        label.transform.localEulerAngles = new Vector3(0, 0, Mathf.Round(label.transform.localEulerAngles.z/180)*180);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,6 +41,7 @@ public class knobLabel : MonoBehaviour
         if (other.CompareTag("Car"))
         {
             hidden = false;
+            move = true;
         }
     }
 
@@ -44,6 +50,7 @@ public class knobLabel : MonoBehaviour
         if (other.CompareTag("Car"))
         {
             hidden = true;
+            move = true;
         }
     }
 }
