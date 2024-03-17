@@ -1,32 +1,36 @@
 ﻿<Properties StartupConfiguration="{8FB45C1F-45E1-B038-8C33-16262D6BF2AA}|">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="098225ed-51f2-4596-85c3-1add81481f6a" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/gameLogic.cs">
     <Files>
-      <File FileName="Assets/Scripts/carDriver.cs" Line="405" Column="19" />
-      <File FileName="Assets/Scripts/player.cs" Line="163" Column="68" />
-      <File FileName="Assets/Scripts/camController.cs" Line="31" Column="1" />
-      <File FileName="Assets/Scripts/gameLogic.cs" Line="185" Column="6" />
-      <File FileName="Assets/Scripts/toggler.cs" Line="36" Column="42" />
-      <File FileName="Assets/continuousInput.cs" Line="88" Column="17" />
-      <File FileName="Assets/knobLabel.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/linkButton.cs" Line="102" Column="10" />
+      <File FileName="Assets/Scripts/carDriver.cs" />
+      <File FileName="Assets/Scripts/player.cs" />
+      <File FileName="Assets/Scripts/camController.cs" />
+      <File FileName="Assets/Scripts/gameLogic.cs" Line="185" Column="1" />
+      <File FileName="Assets/Scripts/toggler.cs" />
+      <File FileName="Assets/continuousInput.cs" />
+      <File FileName="Assets/knobLabel.cs" />
+      <File FileName="Assets/Scripts/linkButton.cs" />
       <File FileName="Assets/Scripts/MaterialChecker.cs" />
-      <File FileName="Assets/Scripts/carRighterUpper.cs" Line="52" Column="18" />
+      <File FileName="Assets/Scripts/carRighterUpper.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="my-website" selected="True">
-            <Node name="Assets" expanded="True" />
+          <Node name="my-website">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="gameLogic.cs" selected="True" />
+              </Node>
+            </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="958967ac-d023-42fb-9e2f-7ce11c65ca72" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

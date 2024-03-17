@@ -71,7 +71,7 @@ public class gameLogic : MonoBehaviour
         lastFPS = Mathf.Lerp(1 / Time.smoothDeltaTime, lastFPS, 0.99f);
         FPSCounter.text = "FPS: " + Mathf.Round(lastFPS).ToString();
 
-        KMHCounter.text = Mathf.Round(controller.carSpeed*3.6f).ToString() + " km/h";
+        KMHCounter.text = Mathf.Round(controller.carSpeed * 3.6f / controller.gameObject.transform.localScale.x).ToString() + " km/h";
 
         CCIndicator.SetActive(controller.cruiseControl);
 
