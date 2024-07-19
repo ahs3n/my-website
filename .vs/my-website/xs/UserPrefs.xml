@@ -1,15 +1,12 @@
 ﻿<Properties StartupConfiguration="{8FB45C1F-45E1-B038-8C33-16262D6BF2AA}|">
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="876616da-fd82-42e6-bf9a-9f99027aacb3" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="60f267fe-4bbb-4fab-845a-d413a5c9a60e" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/player.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/carDriver.cs">
     <Files>
-      <File FileName="Assets/Scripts/carDriver.cs" />
-      <File FileName="Assets/Scripts/player.cs" Line="155" Column="74" />
+      <File FileName="Assets/Scripts/carDriver.cs" Line="493" Column="42" />
+      <File FileName="Assets/Scripts/player.cs" Line="159" Column="30" />
       <File FileName="Assets/Scripts/camController.cs" />
       <File FileName="Assets/Scripts/gameLogic.cs" />
       <File FileName="Assets/Scripts/toggler.cs" />
@@ -25,13 +22,14 @@
         <State name="__root__">
           <Node name="my-website">
             <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="player.cs" selected="True" />
-              </Node>
+              <Node name="Scripts" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
