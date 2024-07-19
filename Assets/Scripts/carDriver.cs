@@ -489,8 +489,8 @@ public class carDriver : MonoBehaviour
                 Debug.Log("Orientation Reset");
                 gameObject.transform.position = gameObject.transform.position + Vector3.up * 2;
                 gameObject.transform.rotation = Quaternion.Euler(0, gameObject.transform.rotation.eulerAngles.y, 0);
-                rb.velocity = Vector3.zero;
-                rb.angularVelocity = Vector3.zero;
+                rb.velocity *= .5f;
+                rb.angularVelocity *= .5f;
             }
         }
 
